@@ -42,14 +42,14 @@ When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volum
 
 ### Generating CEUR-WS.org proceedings ###
 
-To get started with this, you need a `toc.xml` file ([see this example](toc.xml)), which you can either write manually, or have generated from an EasyChair archive (see above).
+To get started with this, you need a `toc.xml` file ([see this example](./toc.xml)), which you can either write manually, or have generated from an EasyChair archive (see above).
 
 TODO: further steps to be documented
 
 License
 -------
 
-This code is licensed under [GPL version 3](LICENSE) or any later version.
+This code is licensed under [GPL version 3](./LICENSE) or any later version.
 
  [1]: http://ceur-ws.org "CEUR-WS.org"
  [2]: http://easychair.org "EasyChair"
