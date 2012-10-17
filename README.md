@@ -40,6 +40,12 @@ When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volum
 3. Copy the ceur-make scripts into that directory, so that they become siblings of the 9999PPPP per-paper directories, the README file, etc.
 4. Generate toc.xml by `make toc.xml` and adapt it manually.
 
+### Generating CEUR-WS.org proceedings ###
+
+To get started with this, you need a `toc.xml` file ([see this example](toc.xml)), which you can either write manually, or have generated from an EasyChair archive (see above).
+
+TODO: further steps to be documented
+
 License
 -------
 
