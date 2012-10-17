@@ -74,7 +74,7 @@ ceur-ws/paper-01.pdf: ceur-ws ID
 	done ; \
 	ln -sfv ../proc.pdf ceur-ws/$$(< ID)-complete.pdf
 
-# creates a BibTeX file for the proceedings volume.  This file will probably need manual fine-tuning, and needs to be copied to a file named by the actual identifier of the event.
+# creates a BibTeX file for the proceedings volume.  This file will probably need manual fine-tuning (e.g. for capitalization of titles and for non-ASCII characters), and needs to be copied to a file named by the actual identifier of the event.
 # 
 # TODO find out whether one can parameterize the target name with $$(< ID)
 ceur-ws/temp.bib: toc.xml workshop.xml ceur-ws ID
