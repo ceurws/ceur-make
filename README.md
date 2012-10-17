@@ -14,7 +14,7 @@ Features
 Disclaimer
 ----------
 
-CEUR-WS.org may revise their requirements for [index.html] [3] files, [copyright forms] [4], etc., at any time.  You are responsible for checking whether CEUR-WS.org have released new versions of these.  The ceur-make developers welcome any bug reports related to this.
+CEUR-WS.org may revise their requirements for [index.html] [3] files, [copyright forms] [4], etc., at any time.  You are responsible for checking whether CEUR-WS.org have released new versions of these.  The ceur-make developers welcome any [bug reports] [5] related to this.
 
 Use ceur-make at your own risk.  At the time of this writing, the documentation (both in this README file and in the sources) is not yet complete, but we will be working on this.
 
@@ -26,7 +26,7 @@ Prerequisites
 * Perl 5 (for processing EasyChair proceedings; any recent version should be sufficient)
 * [Saxon-HE 9](http://saxon.sourceforge.net/#F9.4HE) (other XSLT 2 processors might work as well, but the Makefile currently assumes Saxon)
 
-ceur-make has not been tested on any other operating system than Linux so far; reports from users of other systems are welcome.
+ceur-make has not been tested on any other operating system than Linux so far; [reports] [5] from users of other systems are welcome.
 
 How to use
 ----------
@@ -55,3 +55,4 @@ This code is licensed under [GPL version 3](/clange/ceur-make/blob/master/LICENS
  [2]: http://easychair.org "EasyChair"
  [3]: http://ceur-ws.org/Vol-XXX/index.html "index.html"
  [4]: http://ceur-ws.org/Non-Ex-Publication-Permission-Template.txt "copyright form"
+ [5]: /clange/ceur-make/issues "issues"
