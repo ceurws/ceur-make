@@ -26,16 +26,16 @@
     <conference>FOO 2013</conference>
     <!-- CEUR-WS.org proceedings volume number
 
-         Take care: You should adapt this in the last minute before uploading to make sure that it will be “the next free number” and therefore match the number your volume will actually get.  Otherwise you will promptly have to file a correction request.
+         Take care: You usually don't know this number in advance, at least not in the case that there are multiple submissions to CEUR-WS.org on the same day.  We recommend that you ask in advance for a volume number, as explained in the “Procedure PUT” section of http://ceur-ws.org/HOWTOSUBMIT.html.
          -->
-    <number>908</number>
+    <number>XXX</number>
     <!-- homepage of the event -->
     <homepage>http://foobar2013.org</homepage>
     <!-- location and date are used by BibLaTeX, which is highly recommended; see toc2bibtex.xsl for details -->
     <!-- location of the event -->
     <location>Bremen, Germany</location>
     <!-- date of the event in YYYY-MM-DD format -->
-    <date>2013-07-11</date>
+    <date>YYYY-MM-DD</date>
     <editors>
         <!-- please sort alphabetically; the XSLT does not yet do this automatically -->
         <editor>
