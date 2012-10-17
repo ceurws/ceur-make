@@ -10,6 +10,8 @@ Features
   * [a CEUR-WS.org compliant index.html file] [3]
   * [a CEUR-WS.org compliant copyright form] [4]
   * a LaTeX table of contents that helps you generate an all-in-one PDF version of the proceedings
+  * a BibTeX database to make your proceedings citable
+* Optionally generate this table of contents from [EasyChair] [2] proceedings
   
 Disclaimer
 ----------
