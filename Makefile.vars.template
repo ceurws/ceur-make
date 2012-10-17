@@ -1,4 +1,14 @@
-# Please copy this file to Makefile.vars and adapt the path to your Saxon-HE 9 jar
+# settings of some variables to be used in Makefile
+#
+# Please copy to Makefile.vars and adapt
+#
+# Part of ceur-make (https://github.com/clange/ceur-make/)
+# 
+# © Christoph Lange 2012
+#
+# Licensed under GPLv3 or any later version
+
+# path to your Saxon-HE 9 jar for XSLT processing
 SAXON = java -jar /home/clange/svn/kwarc.info/swim/projects/krextor/trunk/lib/saxon/saxon9he.jar
 
 # If you use a version control system, you may want any directories created by ceur-make to be added to version control; this is an example for Subversion.
