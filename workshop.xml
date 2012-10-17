@@ -1,0 +1,54 @@
+<!--
+    This is a sample workshop.xml file that shows the possible constructs.
+    
+    Part of ceur-make (https://github.com/clange/ceur-make/)
+    
+    Note:
+    * Some steps require further manual work.
+    * There are still a lot of hard-coded assumptions in this implementation.
+    
+    © Christoph Lange 2012
+    
+    Licensed under GPLv3 or any later version
+-->
+<workshop>
+    <title>
+        <!-- ID used to name some of the generated files -->
+        <id>foobar</id>
+        <!-- acronym of the event -->
+        <acronym>FooBar</acronym>
+        <!-- long name of the event -->
+        <volume>Bargaining for Food</volume>
+        <!-- full title of the proceedings volume --> 
+        <full>Proceedings of the 24th International Workshop on Bargaining for Food</full>
+    </title>
+    <!-- conference hosting this workshop -->
+    <conference>FOO 2013</conference>
+    <!-- CEUR-WS.org proceedings volume number
+
+         Take care: You should adapt this in the last minute before uploading to make sure that it will be “the next free number” and therefore match the number your volume will actually get.  Otherwise you will promptly have to file a correction request.
+         -->
+    <number>908</number>
+    <!-- homepage of the event -->
+    <homepage>http://foobar2013.org</homepage>
+    <!-- location and date are used by BibLaTeX, which is highly recommended; see toc2bibtex.xsl for details -->
+    <!-- location of the event -->
+    <location>Bremen, Germany</location>
+    <!-- date of the event in YYYY-MM-DD format -->
+    <date>2013-07-11</date>
+    <editors>
+        <!-- please sort alphabetically; the XSLT does not yet do this automatically -->
+        <editor>
+            <homepage>http://foobar2013.org/alice/</homepage>
+            <name>Alice Carroll</name>
+            <affiliation>University of Wonders</affiliation>
+            <country>UK</country>
+        </editor>
+        <editor submitting="true">
+            <homepage>http://cs.bham.ac.uk/~langec</homepage>
+            <name>Christoph Lange</name>
+            <affiliation>University of Birmingham</affiliation>
+            <country>UK</country>
+        </editor>
+    </editors>
+</workshop>

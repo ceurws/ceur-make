@@ -1,0 +1,23 @@
+<!--
+    This is a sample toc.xml file that shows the possible constructs.  It will be overwritten by "make toc.xml".
+    
+    Part of ceur-make (https://github.com/clange/ceur-make/)
+    
+    Note:
+    * Some steps require further manual work.
+    * There are still a lot of hard-coded assumptions in this implementation.
+    
+    © Christoph Lange 2012
+    
+    Licensed under GPLv3 or any later version
+-->
+<toc>
+	<paper>
+		<title>title of first paper</title>
+		<pages from="2" to="6"/>
+		<authors>
+			<author>Alice Carroll</author>
+			<author>Bob Lewis</author>
+		</authors>
+	</paper>
+</toc>
