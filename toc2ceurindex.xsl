@@ -97,10 +97,6 @@
   We offer a <a href="{ $id }.bib">BibTeX file</a> for citing papers of this workshop from LaTeX.
 </p>
 
-<p>
-  Please see the <a href="{ $workshop/homepage }">workshop homepage</a> for further details about the workshop</p>
-
-
 <hr/>
 <font color="#777777" size="-1">
   <xsl:value-of select="format-date(current-date(), '[D]-[MNn,*-3]-[Y]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
