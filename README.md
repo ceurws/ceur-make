@@ -1,7 +1,7 @@
 ceur-make
 =========
 
-A set of scripts to semi-automatically generate workshop proceedings for [CEUR-WS.org] [1], with special support for proceedings exported from [EasyChair] [2].
+A free set of scripts to semi-automatically generate open access workshop proceedings for [CEUR-WS.org] [1], with special support for proceedings exported from [EasyChair] [2].
 
 Features
 --------
