@@ -30,7 +30,9 @@ copyright-form.txt: workshop.xml
 # This should be included into your proc.tex file via
 # \input{toc}
 #
-# Note that for now you have to provide a sufficient LaTeX command \add{filename}{title}{authors}, which results in including the paper filename.pdf into your overall PDF file.  You may, e.g., use \includepdf from the pdfpages package to get this job done.
+# Note that for now you have to provide a sufficient LaTeX command \add{filename}{title}{authors}, which results in including the paper filename.pdf into your overall PDF file.  You may, e.g., use \includepdf from the pdfpages package to get this job done, as follows:
+# \usepackage{pdfpages}
+# \newcommand{\add}[4][]{\includepdf[#1,scale=1.0,addtotoc={1,addchap,0,#3\\ {#4},#2}]{#2}}
 toc.tex: toc.xml
 	$(SAXON) $< toc2latex.xsl > $@
 
