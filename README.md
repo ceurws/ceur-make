@@ -25,13 +25,19 @@ Prerequisites
 
 * GNU make (any recent version should be sufficient)
 * GNU bash (any recent version should be sufficient)
-* Perl 5 (for processing EasyChair proceedings; any recent version should be sufficient)
 * [Saxon-HE 9](http://saxon.sourceforge.net/#F9.4HE) (other XSLT 2 processors might work as well, but the Makefile currently assumes Saxon)
+* Optional:
+  * Perl 5 (for processing EasyChair proceedings; any recent version should be sufficient)
+  * TeX (for generating an all-in-one proceedings file; any recent version should be sufficient; tested with [TeX Live 2012](http://www.tug.org/texlive/))
 
 ceur-make has not been tested on any other operating system than Linux so far; [reports] [5] from users of other systems are welcome.
 
 How to use
 ----------
+
+### Getting started ###
+
+To get started, you need to copy the ceur-make scripts (`Makefile`, `*.pl`, `*.xsl`, `*.xml`) into the directory in which you would like to keep your proceedings.  Copy `Makefile.vars.template` to `Makefile.vars` and adapt the paths to point to your local installations of Saxon, etc.
 
 ### Export from EasyChair (optional) ###
 
