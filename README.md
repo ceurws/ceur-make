@@ -52,7 +52,13 @@ When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volum
 
 To get started with this, you need a `toc.xml` file ([see this example](/clange/ceur-make/blob/master/toc.xml)), which you can either write manually, or have generated from an EasyChair archive (see above).  Additionally, you need to write `workshop.xml` ([see this example](/clange/ceur-make/blob/master/workshop.xml)) manually.
 
-TODO: further steps to be documented
+From these files, you can generate the following building blocks of a CEUR-WS.org proceedings volume.
+
+* [the index.html file] [3] (via `make`, or specifically `make ceur-ws/index.html`)
+* [the copyright form] [4] (via `make`, or specifically `make copyright-form.txt`)
+* a LaTeX table of contents to help with generating an all-in-one PDF version of the proceedings (via `make`, or specifically `make toc.tex`)
+* a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file gets created as `ceur-ws/temp.bib` and requires manual revision.
+* a ZIP archive for upload to CEUR-WS.org (via `make zip`)
 
 License
 -------
