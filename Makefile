@@ -19,7 +19,7 @@ include Makefile.vars
 # * the ceur-ws directory (including index.html and BibTeX)
 # * a copyright form
 # * a LaTeX table of contents
-all: ceur-ws copyright-form.txt toc.tex
+all: ceur-ws/index.html ceur-ws/temp.bib copyright-form.txt toc.tex
 
 # creates a CEUR-WS.org compliant copyright form
 copyright-form.txt: workshop.xml
@@ -83,7 +83,7 @@ ceur-ws/temp.bib: toc.xml workshop.xml ceur-ws ID
 	$(SAXON) $< toc2bibtex.xsl > $@ ; \
 	echo "Please copy $@ to ceur-ws/$$(< ID).bib and fine-tune manually"
 
-# creates the ceur-ws subdirectory, which contains all files that will go into the actual proceedings volume, or links to such files, if they already exist in other places (e.g. in the EasyChair archive directories).  This currently assumes that 
+# creates the ceur-ws subdirectory, which contains all files that will go into the actual proceedings volume, or links to such files, if they already exist in other places (e.g. in the EasyChair archive directories).
 ceur-ws:
 	-[[ ! -d ceur-ws ]] && $(MKDIR) ceur-ws
 
