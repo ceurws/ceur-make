@@ -37,7 +37,7 @@ How to use
 
 ### Getting started ###
 
-To get started, you need to copy the ceur-make scripts (`Makefile`, `*.pl`, `*.xsl`, `*.xml`) into the directory in which you would like to keep your proceedings.  Copy `Makefile.vars.template` to `Makefile.vars` and adapt the paths to point to your local installations of Saxon, etc.
+To get started, you need to copy the ceur-make scripts into the directory in which you would like to keep your proceedings.  You can do this by calling `./ceur-make-init path/to/your/directory` from the directory where you installed ceur-make.  Copy `Makefile.vars.template` to `Makefile.vars` and adapt the paths to point to your local installations of Saxon, etc.
 
 ### Export from EasyChair (optional) ###
 

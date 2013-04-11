@@ -1,0 +1,25 @@
+#!/bin/bash
+# 
+# Script to set up ceur-make in a given directory
+#
+# Part of ceur-make (https://github.com/clange/ceur-make/)
+#
+# © Christoph Lange 2013
+#
+# Licensed under GPLv3 or any later version
+
+CEUR_MAKE_FILES="Makefile \
+	Makefile.vars.template \
+	easychair2xml.pl \
+	copyright-form.xsl \
+	id.xsl \
+	toc2bibtex.xsl \
+	toc2ceurindex.xsl \
+	toc2latex.xsl \
+	toc.xml \
+	workshop.xml"
+
+TARGET_DIRECTORY="${1?please specify the directory in which ceur-make should be initialized}"
+
+[[ -d ${TARGET_DIRECTORY} ]] || mkdir --parents ${TARGET_DIRECTORY}
+cp $CEUR_MAKE_FILES "${TARGET_DIRECTORY}"
