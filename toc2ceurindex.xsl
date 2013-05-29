@@ -50,7 +50,7 @@
 
   <br/><br/><br/>
 
-  <h1><a href="{ $workshop/homepage }"><span class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/> <xsl:value-of select="$year"/></span></a><br/>
+  <h1><a href="{ $workshop/homepage }"><span class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
   <span class="CEURVOLTITLE"><xsl:value-of select="$workshop/title/volume"/></span></h1>
 
   <br/>
