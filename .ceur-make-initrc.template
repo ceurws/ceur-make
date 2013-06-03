@@ -1,0 +1,10 @@
+# Configuration for ceur-make-init
+#
+# Part of ceur-make (https://github.com/clange/ceur-make/)
+
+# In development mode, ceur-make-init will create symbolic links from the target directory to most of its files, instead of copying them.
+CEUR_MAKE_DEVEL_MODE="true"
+
+# Local Variables:
+# mode: shell-script
+# End:

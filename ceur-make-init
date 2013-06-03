@@ -8,18 +8,36 @@
 #
 # Licensed under GPLv3 or any later version
 
-CEUR_MAKE_FILES="Makefile \
-	Makefile.vars.template \
+INIT_FILE=".ceur-make-initrc"
+[[ -r "$INIT_FILE" ]] && . "$INIT_FILE"
+
+CEUR_MAKE_FILES_ALWAYS_COPY="toc.xml \
+	workshop.xml"
+CEUR_MAKE_FILES_MAY_LINK="Makefile \
 	easychair2xml.pl \
 	copyright-form.xsl \
 	id.xsl \
 	toc2bibtex.xsl \
 	toc2ceurindex.xsl \
-	toc2latex.xsl \
-	toc.xml \
-	workshop.xml"
+	toc2latex.xsl"
+CEUR_MAKE_FILES_TEMPLATES="Makefile.vars.template"
 
 TARGET_DIRECTORY="${1?please specify the directory in which ceur-make should be initialized}"
 
 [[ -d ${TARGET_DIRECTORY} ]] || mkdir --parents ${TARGET_DIRECTORY}
-cp $CEUR_MAKE_FILES "${TARGET_DIRECTORY}"
+
+if [[ -z "$CEUR_MAKE_DEVEL_MODE" ]]
+then
+    cp -v $CEUR_MAKE_FILES_ALWAYS_COPY $CEUR_MAKE_FILES_MAY_LINK $CEUR_MAKE_FILES_TEMPLATES "${TARGET_DIRECTORY}"
+else
+    cp -v $CEUR_MAKE_FILES_ALWAYS_COPY "${TARGET_DIRECTORY}"
+    for link in $CEUR_MAKE_FILES_MAY_LINK
+    do
+        ln -sv "$PWD/$link" "${TARGET_DIRECTORY}"
+    done
+    for template in $CEUR_MAKE_FILES_TEMPLATES
+    do
+        cp -v $template "${TARGET_DIRECTORY}/${template%.template}"
+    done
+fi
+    
