@@ -77,11 +77,10 @@ ceur-ws/paper-01.pdf: ceur-ws ID
 	ln -sfv ../proc.pdf ceur-ws/$$(< ID)-complete.pdf
 
 # creates a BibTeX file for the proceedings volume.  This file will probably need manual fine-tuning (e.g. for capitalization of titles and for non-ASCII characters), and needs to be copied to a file named by the actual identifier of the event.
-# 
-# TODO find out whether one can parameterize the target name with $$(< ID)
 ceur-ws/temp.bib: toc.xml workshop.xml ceur-ws ID
 	$(SAXON) $< toc2bibtex.xsl > $@ ; \
-	echo "Please copy $@ to ceur-ws/$$(< ID).bib and fine-tune manually"
+	cp $@ "ceur-ws/$$(< ID).bib"; \
+	echo "temp.bib has been copied to ceur-ws/$$(< ID).bib; please check and adapt this manually."
 
 # creates the ceur-ws subdirectory, which contains all files that will go into the actual proceedings volume, or links to such files, if they already exist in other places (e.g. in the EasyChair archive directories).
 ceur-ws:
@@ -94,8 +93,6 @@ ceur-ws:
 # regenerates all papers from their LaTeX sources, as EasyChair would also do internally.
 #
 # Note that at the moment we don't respect the actual typesetting command (even though EasyChair records it in the README_EASYCHAIR files), e.g. this won't work for papers created via an intermediate DVI output, but we assume that everything goes to PDF directly.
-# 
-# TODO maybe write "command" into toc.xml as well, then read it from there
 retex:
 	for i in $(PAPER_DIRECTORIES) ; \
 	do \

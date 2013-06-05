@@ -58,7 +58,7 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 * [the index.html file] [3] (via `make`, or specifically `make ceur-ws/index.html`)
 * [the copyright form] [4] (via `make`, or specifically `make copyright-form.txt`)
 * a LaTeX table of contents to help with generating an all-in-one PDF version of the proceedings (via `make`, or specifically `make toc.tex`)
-* a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file gets created as `ceur-ws/temp.bib` and requires manual revision.
+* a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file is copied to `ceur-ws/yourworkshopYYYY.bib` (depending on what you configure in `workshop.xml`).  It may work out of the box with [BibLaTeX](http://www.ctan.org/tex-archive/help/Catalogue/entries/biblatex.html) and [Biber](http://biblatex-biber.sourceforge.net/) but usually requires manual revision, as ceur-make does not handle persons' names as intelligently as BibTeX, and as `bibtex` does not support Unicode names and identifiers.
 * a ZIP archive for upload to CEUR-WS.org (via `make zip`)
 
 License
@@ -70,4 +70,4 @@ This code is licensed under [GPL version 3](/clange/ceur-make/blob/master/LICENS
  [2]: http://easychair.org "EasyChair"
  [3]: http://ceur-ws.org/Vol-XXX/index.html "index.html"
  [4]: http://ceur-ws.org/Non-Ex-Publication-Permission-Template.txt "copyright form"
- [5]: /clange/ceur-make/issues "issues"
+ [5]: https://github.com/clange/ceur-make/issues "issues"
