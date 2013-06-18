@@ -9,7 +9,7 @@
 # Licensed under GPLv3 or any later version
 
 # path to your Saxon-HE 9 jar for XSLT processing
-SAXON = java -jar /home/clange/svn/kwarc.info/swim/projects/krextor/trunk/lib/saxon/saxon9he.jar
+SAXON = java -jar /home/clange/tools/saxon/saxon9he.jar
 
 # If you use a version control system, you may want any directories created by ceur-make to be added to version control; this is an example for Subversion.
 MKDIR = svn mkdir
