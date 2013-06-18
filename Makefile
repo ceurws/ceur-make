@@ -74,7 +74,9 @@ ceur-ws/paper-01.pdf: ceur-ws ID
 		ln -sfv ../$$p/$$p.pdf ceur-ws/paper-$$(printf "%02d" $$i).pdf ; \
 		(( i++ )) ; \
 	done ; \
-	ln -sfv ../proc.pdf ceur-ws/$$(< ID)-complete.pdf
+	if [[ -e ../proc.pdf ]] ; then \
+		ln -sfv ../proc.pdf ceur-ws/$$(< ID)-complete.pdf ; \
+	fi
 
 # creates a BibTeX file for the proceedings volume.  This file will probably need manual fine-tuning (e.g. for capitalization of titles and for non-ASCII characters), and needs to be copied to a file named by the actual identifier of the event.
 ceur-ws/temp.bib: toc.xml workshop.xml ceur-ws ID
