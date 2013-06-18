@@ -35,7 +35,7 @@
     <!-- location of the event -->
     <location>Bremen, Germany</location>
     <!-- date of the event in YYYY-MM-DD format -->
-    <date>YYYY-MM-DD</date>
+    <date>2013-06-18</date>
     <editors>
         <!-- please sort alphabetically; the XSLT does not yet do this automatically -->
         <editor>
