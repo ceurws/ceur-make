@@ -29,7 +29,7 @@
               event: http://purl.org/NET/c4dm/event.owl#"
       typeof="bibo:Proceedings">
       <head>
-        <meta http-equiv="Content-type" content="text/html;charset=ISO-8859-1"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
+        <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
         <link rel="foaf:page" href="http://ceur-ws.org/Vol-XXX/"/>
         <style type="text/css"><![CDATA[
