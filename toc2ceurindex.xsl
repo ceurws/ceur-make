@@ -34,7 +34,7 @@
         <link rel="foaf:page" href="http://ceur-ws.org/Vol-XXX/"/>
         <style type="text/css"><![CDATA[
 .unobtrusive {color: #777777; font-size: smaller;} /* unobtrusive text; for copyright notes */
-.copyright {font-size: x-small;} /* even smaller text in copyright notes; x-small replaces <font size="-1"> when base size is medium */
+.copyright {font-size: x-small;} /* even smaller text in copyright notes; x-small replaces &lt;font size="-1"&gt; when base size is medium */
         ]]>
         </style>
         <title>CEUR-WS.org/Vol-XXX - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
