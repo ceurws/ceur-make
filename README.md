@@ -23,12 +23,15 @@ Use ceur-make at your own risk.  At the time of this writing, the documentation 
 Prerequisites
 -------------
 
-* GNU make (any recent version should be sufficient)
-* GNU bash (any recent version should be sufficient)
-* [Saxon-HE 9](http://saxon.sourceforge.net/#F9.4HE) (other XSLT 2 processors might work as well, but the Makefile currently assumes Saxon)
+* [GNU make](http://www.gnu.org/software/make/) (any recent version should be sufficient)
+* [GNU bash](http://www.gnu.org/software/bash/) (any recent version should be sufficient)
+* [Saxon-HE 9](http://saxon.sourceforge.net) (other XSLT 2 processors might work as well, but the Makefile currently assumes Saxon, and ceur-make has been tested with Saxon-HE 9.5)
+* [Recode](http://recode.progiciels-bpi.ca/index.html) (for post-processing the index.html file)
 * Optional:
-  * Perl 5 (for processing EasyChair proceedings; any recent version should be sufficient)
+  * [Perl 5](http://www.perl.org/) (for processing EasyChair proceedings; any recent version should be sufficient)
   * TeX (for generating an all-in-one proceedings file; any recent version should be sufficient; tested with [TeX Live 2012](http://www.tug.org/texlive/))
+  
+On a recent Linux all of these components (except maybe Saxon) should be installable via the central package manager.  On Mac OS, most components should be installable via [MacPorts](http://www.macports.org/) or [Fink](http://fink.thetis.ig42.org/), on Windows via [Cygwin](http://cygwin.com/).
 
 ceur-make has not been tested on any other operating system than Linux so far; [reports] [5] from users of other systems are welcome.
 
