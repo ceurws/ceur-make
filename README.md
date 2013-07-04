@@ -3,11 +3,18 @@ ceur-make
 
 A free set of scripts to semi-automatically generate open access workshop proceedings for [CEUR-WS.org] [1], with special support for proceedings exported from [EasyChair] [2].
 
+Key Advantages
+--------------
+
+* facilitates the generation of CEUR-WS.org workshop proceedings volumes
+  * … particularly so for workshops using the EasyChair submission system
+* enriches your CEUR-WS.org volume, as an extra feature over the standard template, with RDFa annotations to improve the visibility of your workshop to semantic search engines
+
 Features
 --------
 
 * From a special table of contents file, generate
-  * [a CEUR-WS.org compliant index.html file] [3]
+  * [a CEUR-WS.org compliant index.html file] [3] with additional RDFa annotations
   * [a CEUR-WS.org compliant copyright form] [4]
   * a LaTeX table of contents that helps you generate an all-in-one PDF version of the proceedings
   * a BibTeX database to make your proceedings citable
