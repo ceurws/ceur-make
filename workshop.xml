@@ -22,8 +22,6 @@
         <!-- full title of the proceedings volume --> 
         <full>Proceedings of the 24th International Workshop on Bargaining for Food</full>
     </title>
-    <!-- conference hosting this workshop -->
-    <conference>FOO 2013</conference>
     <!-- CEUR-WS.org proceedings volume number
 
          Take care: You usually don't know this number in advance, at least not in the case that there are multiple submissions to CEUR-WS.org on the same day.  We recommend that you ask in advance for a volume number, as explained in the “Procedure PUT” section of http://ceur-ws.org/HOWTOSUBMIT.html.
@@ -36,6 +34,13 @@
     <location>Bremen, Germany</location>
     <!-- date of the event in YYYY-MM-DD format -->
     <date>2013-06-18</date>
+    <!-- conference this workshop is co-located with;
+         remove the whole <conference>...</conference> element if the workshop is standalone -->
+    <conference>
+        <acronym>FOO 2013</acronym>
+        <full>1st International Conference on Abstract Nonsense</full>
+        <homepage>http://foo2013.org</homepage>
+    </conference>
     <editors>
         <!-- please sort alphabetically; the XSLT does not yet do this automatically -->
         <editor>
