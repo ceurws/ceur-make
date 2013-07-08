@@ -26,7 +26,8 @@
     <html
       about="http://ceur-ws.org/Vol-XXX/"
       prefix="bibo: http://purl.org/ontology/bibo/
-              event: http://purl.org/NET/c4dm/event.owl#"
+              event: http://purl.org/NET/c4dm/event.owl#
+              swc: http://data.semanticweb.org/ns/swc/ontology#"
       typeof="bibo:Proceedings">
       <head>
         <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
@@ -73,6 +74,23 @@
     
       <h3>
         <span property="dcterms:title" class="CEURFULLTITLE">Proceedings of the <xsl:value-of select="$workshop/title/full"/></span><br/>
+        <xsl:choose>
+          <xsl:when test="$workshop/conference">
+            co-located with <xsl:if test="$workshop/conference/full"><xsl:value-of select="$workshop/conference/full"/> (</xsl:if>
+            <xsl:choose>
+              <xsl:when test="$workshop/conference/homepage">
+                <a rel="swc:isSubEventOf" href="{ $workshop/conference/homepage }"><span class="CEURCOLOCATED"><xsl:value-of select="$workshop/conference/acronym"/></span></a>
+              </xsl:when>
+              <xsl:otherwise>
+                <span class="CEURCOLOCATED"><xsl:value-of select="$workshop/conference/acronym"/></span>
+              </xsl:otherwise>
+            </xsl:choose><xsl:if test="$workshop/conference/full">)</xsl:if><br/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:comment> co-located with &lt;span class="CEURCOLOCATED"&gt;NONE&lt;/span&gt; </xsl:comment>
+          </xsl:otherwise>
+        </xsl:choose>
+        
       </h3>
       <h3><xsl:comment> TODO check whether the DBpedia page for rel="event:place" exists! </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
       <br/>
