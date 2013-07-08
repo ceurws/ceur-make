@@ -8,7 +8,7 @@
 
     TODO add further documentation
     
-    © Christoph Lange 2012
+    © Christoph Lange 2012–2013
     
     Licensed under GPLv3 or any later version
 -->
