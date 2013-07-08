@@ -119,8 +119,8 @@
     
     <hr/>
     <span class="unobtrusive">
-      <xsl:value-of select="format-date(current-date(), '[D]-[MNn,*-3]-[Y]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
-    <span property="dcterms:issued" content="jjjj-mm-dd" class="CEURPUBDATE">dd-mmm-jjjj</span>: published on CEUR-WS.org
+      <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
+    <span property="dcterms:issued" content="jjjj-mm-dd" class="CEURPUBDATE">jjjj-mm-dd</span>: published on CEUR-WS.org
     </span>
     </body></html>
     
