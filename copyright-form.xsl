@@ -31,8 +31,8 @@ ________________________________________________________________________
 
 Prepared for the Workshop:
 Proceedings of the <xsl:value-of select="title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="year-from-date(xs:date(date))"/> Workshop
-<xsl:value-of select="conference"/>
-(to be published with CEUR-WS.org)
+<xsl:if test="conference/acronym"><xsl:value-of select="conference/acronym"/><xsl:text>&#xa;</xsl:text>
+</xsl:if>(to be published with CEUR-WS.org)
 
 I hereby grant non-exclusive and non-time limited publication permissions over 
 the above-named material (the Material) to the following personals (hereinafter 
