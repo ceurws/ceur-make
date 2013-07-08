@@ -1,6 +1,7 @@
 ceur-ws/
-ceur-ws.css
-Makefile.vars
-ID
-.ceur-make-initrc
 *~
+.ceur-make-initrc
+ID
+Makefile.vars
+ceur-ws.css
+copyright-form.txt
