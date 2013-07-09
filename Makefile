@@ -40,7 +40,7 @@ toc.tex: toc.xml
 toc.xml:
 	exec > $@ ; \
 	echo '<toc>' ; \
-	for i in $(PAPER_DIRECTORIES) ; do \
+	for i in $(PAPER_DIRECTORIES) ; \
 	do \
 		echo $$i >&2 ; \
 		cd $$i ; \
@@ -69,7 +69,8 @@ ID: workshop.xml
 # This setup is not necessarily suitable for multi-track proceedings, e.g. joint proceedings of more than one workshop, where one would rather prefer paper names such as track1-01.pdf, track1-02.pdf, track2-01.pdf, etc.
 ceur-ws/paper-01.pdf: ceur-ws ID
 	i=1 ; \
-	for p in $(PAPER_DIRECTORIES) ; do \
+	for p in $(PAPER_DIRECTORIES) ; \
+	do \
 		[[ ! -e $$p/$$p.pdf ]] && break ; \
 		ln -sfv ../$$p/$$p.pdf ceur-ws/paper-$$(printf "%02d" $$i).pdf ; \
 		(( i++ )) ; \
