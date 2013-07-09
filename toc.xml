@@ -1,5 +1,5 @@
 <!--
-    This is a sample toc.xml file that shows the possible constructs.  It will be overwritten by "make toc.xml".
+    This is a sample toc.xml file that shows the possible constructs.  It will be overwritten by "make -B toc.xml".
     
     Part of ceur-make (https://github.com/clange/ceur-make/)
     
