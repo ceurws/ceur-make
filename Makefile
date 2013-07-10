@@ -82,8 +82,7 @@ ceur-ws/paper-01.pdf: ceur-ws ID
 # creates a BibTeX file for the proceedings volume.  This file will probably need manual fine-tuning (e.g. for capitalization of titles and for non-ASCII characters), and needs to be copied to a file named by the actual identifier of the event.
 ceur-ws/temp.bib: toc.xml workshop.xml ceur-ws ID
 	$(SAXON) $< toc2bibtex.xsl > $@ ; \
-	cp $@ "ceur-ws/$$(< ID).bib"; \
-	echo "temp.bib has been copied to ceur-ws/$$(< ID).bib; please check and adapt this manually."
+	echo "Please copy $@ to ceur-ws/$$(< ID).bib and fine-tune manually"
 
 # creates the ceur-ws subdirectory, which contains all files that will go into the actual proceedings volume, or links to such files, if they already exist in other places (e.g. in the EasyChair archive directories).
 ceur-ws:
