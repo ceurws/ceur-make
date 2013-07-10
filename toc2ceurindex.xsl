@@ -113,7 +113,7 @@
       <ol rel="dcterms:hasPart">
         <xsl:for-each select="/toc/paper">
           <xsl:variable name="pdf" select="concat('paper-', format-number(position(), '00'), '.pdf')"/>
-          <li about="{ $pdf }"><span rel="dcterms:format" content="application/pdf"/><a typeof="bibo:Article" href="$pdf"><span property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> <br/>
+          <li about="{ $pdf }"><span rel="dcterms:format" content="application/pdf"/><a typeof="bibo:Article" href="{ $pdf }"><span property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
         <xsl:comment> TODO add resource="foaf-profile" to the outer &lt;span rel="dcterms:creator"&gt;, or rel="foaf:homepage" resource="homepage" to the inner &lt;span property="foaf:name"&gt; manually as appropriate. </xsl:comment> 
         <span class="CEURAUTHORS">
             <xsl:for-each select="authors/author">
