@@ -62,7 +62,7 @@
     
       <br/><br/><br/>
     
-      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="urn:nbn:de:0074-XXX-C" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
+      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="http://ceur-ws.org/Vol-XXX/" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
       <span property="dcterms:alternative" class="CEURVOLTITLE"><xsl:value-of select="$workshop/title/volume"/></span></h1>
     
       <br/>
@@ -87,7 +87,7 @@
         </xsl:choose>
         
       </h3>
-      <h3><xsl:comment> TODO check whether the DBpedia page for rel="event:place" exists! </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
+      <h3><xsl:comment> TODO check whether the DBpedia URI for rel="event:place" exists!  DBpedia URIs have the same names as articles in the English Wikipedia (http://en.wikipedia.org). </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
       <br/>
       <b> Edited by </b>
       <p>
