@@ -87,12 +87,12 @@
         </xsl:choose>
         
       </h3>
-      <h3><xsl:comment> TODO check whether the DBpedia URI for rel="event:place" exists!  DBpedia URIs have the same names as articles in the English Wikipedia (http://en.wikipedia.org). </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
+      <h3><xsl:comment> TODO check whether the DBpedia URI for rel="event:place" exists!&#xa;DBpedia URIs have the same names as articles in the English Wikipedia (http://en.wikipedia.org).&#xa;Then remove this comment. </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
       <br/>
       <b> Edited by </b>
       <p>
     
-      </p><xsl:comment> TODO In addition to href="homepage", add resource="foaf-profile" manually as appropriate. </xsl:comment><h3 rel="bibo:editor">
+      </p><xsl:comment> TODO If your editors have FOAF profiles, please manually add resource="foaf-profile" in addition to href="homepage" for each editor.&#xa;Then remove this comment. </xsl:comment><h3 rel="bibo:editor">
       <xsl:for-each select="$workshop/editors/editor">
           <a href="{ homepage }"><span property="foaf:name" class="CEURVOLEDITOR"><xsl:value-of select="name"/></span></a>, <xsl:value-of select="affiliation"/>, <xsl:value-of select="country"/><br/>
       </xsl:for-each>
@@ -109,7 +109,7 @@
         <xsl:for-each select="/toc/paper">
           <xsl:variable name="pdf" select="concat('paper-', format-number(position(), '00'), '.pdf')"/>
           <li about="{ $pdf }"><span rel="dcterms:format" content="application/pdf"/><a typeof="bibo:Article" href="{ $pdf }"><span property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
-        <xsl:comment> TODO add resource="foaf-profile" to the outer &lt;span rel="dcterms:creator"&gt;, or rel="foaf:homepage" resource="homepage" to the inner &lt;span property="foaf:name"&gt; manually as appropriate. </xsl:comment> 
+        <xsl:comment> TODO If your authors have FOAF profiles, manually add resource="foaf-profile" to each outer &lt;span rel="dcterms:creator"&gt;; otherwise, if they have homepages and you want to link to them, manually add rel="foaf:homepage" resource="homepage" to each inner &lt;span property="foaf:name"&gt;.&#xa;Then remove this comment. </xsl:comment> 
         <span class="CEURAUTHORS">
             <xsl:for-each select="authors/author">
               <span rel="dcterms:creator"><span property="foaf:name"><xsl:value-of select="."/></span></span>
