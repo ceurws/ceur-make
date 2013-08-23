@@ -80,10 +80,12 @@
                   <xsl:with-param name="name">author</xsl:with-param>
                   <xsl:with-param name="content" select="ex:name-list(authors/author)"/>
               </xsl:call-template>
-              <xsl:call-template name="field">
-                  <xsl:with-param name="name">pages</xsl:with-param>
-                  <xsl:with-param name="content" select="concat(pages/@from, '--', pages/@to)"/>
-              </xsl:call-template>
+              <xsl:if test="pages">
+                  <xsl:call-template name="field">
+                      <xsl:with-param name="name">pages</xsl:with-param>
+                      <xsl:with-param name="content" select="concat(pages/@from, '--', pages/@to)"/>
+                  </xsl:call-template>
+              </xsl:if>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">url</xsl:with-param>
                   <xsl:with-param name="content" select="concat($workshop-url, 'paper-', format-number(position(), '00'), '.pdf')"/>
