@@ -27,7 +27,8 @@
       about="http://ceur-ws.org/Vol-XXX/"
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
-              swc: http://data.semanticweb.org/ns/swc/ontology#"
+              swc: http://data.semanticweb.org/ns/swc/ontology#
+              xsd: http://www.w3.org/2001/XMLSchema#"
       typeof="bibo:Proceedings">
       <head>
         <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
@@ -87,7 +88,7 @@
         </xsl:choose>
         
       </h3>
-      <h3><xsl:comment> TODO check whether the DBpedia URI for rel="event:place" exists!&#xa;DBpedia URIs have the same names as articles in the English Wikipedia (http://en.wikipedia.org).&#xa;Then remove this comment. </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
+      <h3><xsl:comment> TODO check whether the DBpedia URI for rel="event:place" exists!&#xa;DBpedia URIs have the same names as articles in the English Wikipedia (http://en.wikipedia.org).&#xa;Then remove this comment. </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
       <br/>
       <b> Edited by </b>
       <p>
