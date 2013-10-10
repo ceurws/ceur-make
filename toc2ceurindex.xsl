@@ -63,7 +63,7 @@
     
       <br/><br/><br/>
     
-      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="http://ceur-ws.org/Vol-XXX/" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
+      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
       <span property="dcterms:alternative" class="CEURVOLTITLE"><xsl:value-of select="$workshop/title/volume"/></span></h1>
     
       <br/>
