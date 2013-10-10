@@ -24,7 +24,7 @@
 
   <xsl:template match="/">
     <html
-      about="http://ceur-ws.org/Vol-XXX/"
+      about="http://ceur-ws.org/Vol-XXX"
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
               swc: http://data.semanticweb.org/ns/swc/ontology#
@@ -33,7 +33,7 @@
       <head>
         <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
-        <link rel="foaf:page" href="http://ceur-ws.org/Vol-XXX/"/>
+        <link rel="foaf:page" href="http://ceur-ws.org/Vol-XXX"/>
         <title>CEUR-WS.org/Vol-XXX - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
       </head>
     
@@ -63,7 +63,7 @@
     
       <br/><br/><br/>
     
-      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="http://ceur-ws.org/Vol-XXX/" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
+      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
       <span property="dcterms:alternative" class="CEURVOLTITLE"><xsl:value-of select="$workshop/title/volume"/></span></h1>
     
       <br/>
