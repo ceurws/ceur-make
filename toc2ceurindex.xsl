@@ -38,7 +38,7 @@
         <title>CEUR-WS.org/Vol-XXX - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
       </head>
     
-      <!--CEURLANG=eng -->
+      <xsl:comment>CEURLANG=<xsl:value-of select="$workshop/language"/></xsl:comment>
       <body>
     
     
@@ -89,7 +89,7 @@
         </xsl:choose>
         
       </h3>
-      <h3><xsl:comment> TODO check whether the DBpedia URI for rel="event:place" exists!&#xa;DBpedia URIs have the same names as articles in the English Wikipedia (http://en.wikipedia.org).&#xa;Then remove this comment. </xsl:comment><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="http://dbpedia.org/resource/{ encode-for-uri($workshop/location) }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
+      <h3><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', 'http://dbpedia.org/resource/') }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
       <br/>
       <b> Edited by </b>
       <p>
