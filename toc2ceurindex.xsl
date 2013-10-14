@@ -21,6 +21,7 @@
 
   <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
   <xsl:variable name="year" select="year-from-date(xs:date($workshop/date))"/>
+  <xsl:variable name="pubyear" select="if ($workshop/pubyear) then $workshop/pubyear else $year"/>
   <xsl:variable name="id" select="concat($workshop/title/id, $year)"/>
 
   <xsl:template match="/">
@@ -52,7 +53,7 @@
             <span property="bibo:volume" content="XXX" class="CEURVOLNR">Vol-XXX</span> <br/>
             <span property="bibo:uri dcterms:identifier" class="CEURURN">urn:nbn:de:0074-XXX-C</span>
             <p class="unobtrusive copyright" style="text-align: justify">Copyright © 
-            <span class="CEURPUBYEAR"><xsl:value-of select="$year"/></span> for the individual papers
+            <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers
             by the papers' authors. Copying permitted only for private and academic purposes.
             This volume is published and copyrighted by its editors.</p>
     
