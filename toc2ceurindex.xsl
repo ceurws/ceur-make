@@ -23,8 +23,10 @@
   <xsl:variable name="year" select="year-from-date(xs:date($workshop/date))"/>
   <xsl:variable name="pubyear" select="if ($workshop/pubyear) then $workshop/pubyear else $year"/>
   <xsl:variable name="id" select="concat($workshop/title/id, $year)"/>
+  <xsl:variable name="number" select="if ($workshop/number) then $workshop/number else 'XXX'"/>
 
   <xsl:template match="/">
+    <xsl:comment> CEURVERSION=2013-10-11 </xsl:comment>
     <html
       about=""
       prefix="bibo: http://purl.org/ontology/bibo/
@@ -35,8 +37,8 @@
       <head>
         <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
-        <link rel="foaf:page" href="http://ceur-ws.org/Vol-XXX"/>
-        <title>CEUR-WS.org/Vol-XXX - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
+        <link rel="foaf:page" href="http://ceur-ws.org/Vol-{ $number }"/>
+        <title>CEUR-WS.org/Vol-<xsl:value-of select="$number"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
       </head>
     
       <xsl:comment>CEURLANG=<xsl:value-of select="$workshop/language"/></xsl:comment>
@@ -50,8 +52,8 @@
           </td>
           <td style="text-align: right; vertical-align: middle">
     
-            <span property="bibo:volume" content="XXX" class="CEURVOLNR">Vol-XXX</span> <br/>
-            <span property="bibo:uri dcterms:identifier" class="CEURURN">urn:nbn:de:0074-XXX-C</span>
+            <span property="bibo:volume" content="{ $number }" class="CEURVOLNR">Vol-<xsl:value-of select="$number"/></span> <br/>
+            <span property="bibo:uri dcterms:identifier" class="CEURURN">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</span>
             <p class="unobtrusive copyright" style="text-align: justify">Copyright © 
             <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers
             by the papers' authors. Copying permitted only for private and academic purposes.
@@ -126,7 +128,7 @@
     <p rel="dcterms:relation">
       <xsl:variable name="pdf" select="concat($id, '-complete.pdf')"/>
       <span about="{ $pdf }" typeof="bibo:Document">
-      The whole proceedings can also be downloaded as a single file (<a property="bibo:uri" content="http://ceur-ws.org/Vol-XXX/{ $pdf }" href="{ $pdf }">PDF</a>, including title pages, preface, and table of contents).
+      The whole proceedings can also be downloaded as a single file (<a property="bibo:uri" content="http://ceur-ws.org/Vol-{ $number }/{ $pdf }" href="{ $pdf }">PDF</a>, including title pages, preface, and table of contents).
     </span></p>
     
     <p>
@@ -136,7 +138,8 @@
     <hr/>
     <span class="unobtrusive">
       <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
-    <span property="dcterms:issued" content="jjjj-mm-dd" class="CEURPUBDATE">jjjj-mm-dd</span>: published on CEUR-WS.org
+    <span property="dcterms:issued" content="yyyy-mm-dd" class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org
+|<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2FVol-{ $number }">valid HTML5</a>|
     </span>
     </body></html>
     
