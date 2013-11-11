@@ -112,8 +112,9 @@
     
       <ol rel="dcterms:hasPart">
         <xsl:for-each select="/toc/paper">
-          <xsl:variable name="pdf" select="concat('paper-', format-number(position(), '00'), '.pdf')"/>
-          <li about="{ $pdf }"><span rel="dcterms:format" content="application/pdf"/><a typeof="bibo:Article" href="{ $pdf }"><span property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
+          <xsl:variable name="id" select="concat('paper-', format-number(position(), '00'))"/>
+          <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
+          <li id="{ $id }" about="{ $pdf }"><span rel="dcterms:format" content="application/pdf"/><a typeof="bibo:Article" href="{ $pdf }"><span property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
         <xsl:comment> TODO If your authors have FOAF profiles, manually add resource="foaf-profile" to each outer &lt;span rel="dcterms:creator"&gt;; otherwise, if they have homepages and you want to link to them, manually add rel="foaf:homepage" resource="homepage" to each inner &lt;span property="foaf:name"&gt;.&#xa;Then remove this comment. </xsl:comment> 
         <span class="CEURAUTHORS">
             <xsl:for-each select="authors/author">
