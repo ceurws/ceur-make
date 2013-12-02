@@ -114,7 +114,7 @@
         <xsl:for-each select="/toc/paper">
           <xsl:variable name="id" select="concat('paper-', format-number(position(), '00'))"/>
           <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
-          <li id="{ $id }" about="{ $pdf }"><span rel="dcterms:format" content="application/pdf"/><a typeof="bibo:Article" href="{ $pdf }"><span property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
+          <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, concat('http://ceur-ws.org/Vol-', $number, '/')) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
         <xsl:comment> TODO If your authors have FOAF profiles, manually add resource="foaf-profile" to each outer &lt;span rel="dcterms:creator"&gt;; otherwise, if they have homepages and you want to link to them, manually add rel="foaf:homepage" resource="homepage" to each inner &lt;span property="foaf:name"&gt;.&#xa;Then remove this comment. </xsl:comment> 
         <span class="CEURAUTHORS">
             <xsl:for-each select="authors/author">
@@ -129,7 +129,7 @@
     <p rel="dcterms:relation">
       <xsl:variable name="pdf" select="concat($id, '-complete.pdf')"/>
       <span about="{ $pdf }" typeof="bibo:Document">
-      The whole proceedings can also be downloaded as a single file (<a property="bibo:uri" content="http://ceur-ws.org/Vol-{ $number }/{ $pdf }" href="{ $pdf }">PDF</a>, including title pages, preface, and table of contents).
+      The whole proceedings can also be downloaded as a single file (<span property="dcterms:format" content="application/pdf"/><a property="bibo:uri" content="http://ceur-ws.org/Vol-{ $number }/{ $pdf }" href="{ $pdf }">PDF</a>, including title pages, preface, and table of contents).
     </span></p>
     
     <p>
