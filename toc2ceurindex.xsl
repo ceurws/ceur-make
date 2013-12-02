@@ -28,13 +28,13 @@
   <xsl:template match="/">
     <xsl:comment> CEURVERSION=2013-11-14 </xsl:comment>
     <html
-      about=""
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
               swc: http://data.semanticweb.org/ns/swc/ontology#
               xsd: http://www.w3.org/2001/XMLSchema#"
       typeof="bibo:Proceedings">
       <head>
+        <base href="http://ceur-ws.org/Vol-{ $number }/"/>
         <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
         <link rel="foaf:page" href="http://ceur-ws.org/Vol-{ $number }"/>
