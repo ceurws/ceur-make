@@ -26,7 +26,7 @@
   <xsl:variable name="number" select="if ($workshop/number) then $workshop/number else 'XXX'"/>
 
   <xsl:template match="/">
-    <xsl:comment> CEURVERSION=2013-11-14 </xsl:comment>
+    <xsl:comment> CEURVERSION=2013-12-02 </xsl:comment>
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
