@@ -34,7 +34,6 @@
               xsd: http://www.w3.org/2001/XMLSchema#"
       typeof="bibo:Proceedings">
       <head>
-        <base href="http://ceur-ws.org/Vol-{ $number }/"/>
         <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
         <link rel="foaf:page" href="http://ceur-ws.org/Vol-{ $number }"/>
@@ -140,7 +139,7 @@
     <span class="unobtrusive">
       <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
     <span property="dcterms:issued" content="yyyy-mm-dd" class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org
-|<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2FVol-{ $number }">valid HTML5</a>|
+|<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2FVol-{ $number }%2F">valid HTML5</a>|
     </span>
     </body></html>
     
