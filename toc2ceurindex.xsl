@@ -100,7 +100,14 @@
     
       </p><xsl:comment> TODO If your editors have FOAF profiles, please manually add resource="foaf-profile" in addition to href="homepage" for each editor.&#xa;Then remove this comment. </xsl:comment><h3 rel="bibo:editor">
       <xsl:for-each select="$workshop/editors/editor">
-          <a href="{ homepage }"><span property="foaf:name" class="CEURVOLEDITOR"><xsl:value-of select="name"/></span></a>, <xsl:value-of select="affiliation"/>, <xsl:value-of select="country"/><br/>
+        <xsl:choose>
+          <xsl:when test="homepage">
+            <a href="{ homepage }"><span property="foaf:name" class="CEURVOLEDITOR"><xsl:value-of select="name"/></span></a>
+          </xsl:when>
+          <xsl:otherwise>
+            <span about="_:{ generate-id() }" property="foaf:name" class="CEURVOLEDITOR"><xsl:value-of select="name"/></span>
+          </xsl:otherwise>
+        </xsl:choose>, <xsl:value-of select="affiliation"/>, <xsl:value-of select="country"/><br/>
       </xsl:for-each>
     </h3>
     
