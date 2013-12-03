@@ -56,6 +56,11 @@
     <editors>
         <!-- please sort alphabetically; the XSLT does not yet do this automatically -->
         <editor>
+            <name>Anonymous</name>
+            <affiliation>University of Nowhere</affiliation>
+            <country>USSR</country>
+        </editor>
+        <editor>
             <homepage>http://foobar2013.org/alice/</homepage>
             <name>Alice Carroll</name>
             <affiliation>University of Wonders</affiliation>
