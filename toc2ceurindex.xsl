@@ -28,7 +28,7 @@
   <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
   <xsl:template match="/">
-    <xsl:comment> CEURVERSION=2013-12-02 </xsl:comment>
+    <xsl:comment> CEURVERSION=2013-12-03 </xsl:comment>
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
@@ -148,7 +148,8 @@
     <span class="unobtrusive">
       <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
     <span property="dcterms:issued" content="yyyy-mm-dd" class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org
-|<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2F{ $volume }%2F">valid HTML5</a>|
+|<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2F{ $volume }%2F">valid HTML5</a>; <a href="http://validator.w3.org/checklink?uri=http%3A%2F%2Fceur-ws.org%2F{ $volume }%2F&amp;hide_ty
+pe=all&amp;depth=&amp;check=Check">check links</a>|
     </span>
     </body></html>
     
