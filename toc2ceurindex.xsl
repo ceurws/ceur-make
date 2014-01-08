@@ -28,7 +28,7 @@
   <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
   <xsl:template match="/">
-    <xsl:comment> CEURVERSION=2013-12-02 </xsl:comment>
+    <xsl:comment> CEURVERSION=2013-12-11 </xsl:comment>
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
@@ -49,7 +49,7 @@
         <table style="border: 0; border-spacing: 0; border-collapse: collapse; width: 95%">
           <tbody><tr>
           <td style="text-align: left; vertical-align: middle">
-            <a rel="dcterms:partOf" href="http://ceur-ws.org/"><img src="../CEUR-WS-logo.png" alt="[CEUR Workshop Proceedings]" style="border: 0"/></a>
+            <a rel="dcterms:partOf" href="http://ceur-ws.org/"><div id="CEURWSLOGO"/></a>
           </td>
           <td style="text-align: right; vertical-align: middle">
     
