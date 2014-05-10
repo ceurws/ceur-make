@@ -24,7 +24,7 @@ CEUR_MAKE_FILES_TEMPLATES="Makefile.vars.template"
 
 TARGET_DIRECTORY="${1?please specify the directory in which ceur-make should be initialized}"
 
-[[ -d ${TARGET_DIRECTORY} ]] || mkdir --parents ${TARGET_DIRECTORY}
+[[ -d "${TARGET_DIRECTORY}" ]] || mkdir --parents "${TARGET_DIRECTORY}"
 
 if [[ -z "$CEUR_MAKE_DEVEL_MODE" ]]
 then
