@@ -118,7 +118,7 @@
     <div class="CEURTOC">
       <h2> Table of Contents </h2>
     
-      <ol rel="dcterms:hasPart">
+      <ul rel="dcterms:hasPart">
         <xsl:for-each select="/toc/paper">
           <xsl:variable name="id" select="concat('paper-', format-number(position(), '00'))"/>
           <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
@@ -130,7 +130,7 @@
               <xsl:if test="position() ne last()">, </xsl:if>
             </xsl:for-each></span><br/></li>
         </xsl:for-each>
-      </ol>
+      </ul>
     
     </div>
     
