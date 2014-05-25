@@ -57,7 +57,14 @@ When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volum
 2. Download the final proceedings as a ZIP file and unzip it into a directory.
 3. Copy the ceur-make scripts into that directory, so that they become siblings of the 9999PPPP per-paper directories, the README file, etc.
 4. Generate toc.xml by `make toc.xml` and adapt it manually.
-    * related issues: [#1](https://github.com/clange/ceur-make/issues/1)
+   * related issues: [#1](https://github.com/clange/ceur-make/issues/1)
+
+#### Manually adapting toc.xml ####
+
+If you would like to publish an all-in-one PDF it makes sense to use page numbers; otherwise it doesn't.  Therefore …
+
+1. If you have an all-in-one PDF, please make sure you adapt the `pages` entries.  They will have to be shifted as soon as the PDF includes material before the papers, such as a preface, and if this material uses the same counter as the papers' pages, e.g. if the preface doesn't use Roman numerals.
+2. If you do not generate an all-in-one PDF, please remove all `pages` entries.
 
 ### Generating CEUR-WS.org proceedings ###
 
@@ -71,15 +78,11 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 * a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file will need manual post-processing; please read on below.
 * a ZIP archive for upload to CEUR-WS.org (via `make zip`)
 
-#### Post-processing the BibTeX database ####
+#### Manually adapting the BibTeX database ####
 
 The BibTeX database, generated as `ceur-ws/temp.bib` may work out of the box with [BibLaTeX](http://www.ctan.org/tex-archive/help/Catalogue/entries/biblatex.html) and [Biber](http://biblatex-biber.sourceforge.net/) but usually requires manual revision, as ceur-make does not handle persons' names as intelligently as BibTeX, and as `bibtex` does not support Unicode names and identifiers.
 
 For these reasons we force you to manually inspect and revise `ceur-ws/temp.bib` and copy it to `ceur-ws/yourworkshopYYYY.bib` (according to the settings in `workshop.xml`); `ceur-ws/temp.bib` is not included in the ZIP archive for upload to CEUR-WS.org.
-
-About page numbers you have two choices:
-1. If you generate an all-in-one PDF, please make sure you adapt the `pages` fields in your BibTeX entries.  They will have to be shifted as soon as the PDF includes material before the papers, such as a preface.
-2. If you do not generate an all-in-one PDF, please remove all `pages` fields.
 
 While you are working on `ceur-ws/temp.bib`, you can test it with `make bibtest.pdf` (which currently assumes plain old BibTeX, not Biber).
 
