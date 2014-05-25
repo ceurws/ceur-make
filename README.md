@@ -68,8 +68,16 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 * [the index.html file] [3] (via `make`, or specifically `make ceur-ws/index.html`)
 * [the copyright form] [4] (via `make`, or specifically `make copyright-form.txt`)
 * a LaTeX table of contents to help with generating an all-in-one PDF version of the proceedings (via `make`, or specifically `make toc.tex`)
-* a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file is copied to `ceur-ws/yourworkshopYYYY.bib` (depending on what you configure in `workshop.xml`).  It may work out of the box with [BibLaTeX](http://www.ctan.org/tex-archive/help/Catalogue/entries/biblatex.html) and [Biber](http://biblatex-biber.sourceforge.net/) but usually requires manual revision, as ceur-make does not handle persons' names as intelligently as BibTeX, and as `bibtex` does not support Unicode names and identifiers.
+* a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file will need manual post-processing; please read on below.
 * a ZIP archive for upload to CEUR-WS.org (via `make zip`)
+
+#### Post-processing the BibTeX database ####
+
+The BibTeX database, generated as `ceur-ws/temp.bib` may work out of the box with [BibLaTeX](http://www.ctan.org/tex-archive/help/Catalogue/entries/biblatex.html) and [Biber](http://biblatex-biber.sourceforge.net/) but usually requires manual revision, as ceur-make does not handle persons' names as intelligently as BibTeX, and as `bibtex` does not support Unicode names and identifiers.
+
+For these reasons we force you to manually inspect and revise `ceur-ws/temp.bib` and copy it to `ceur-ws/yourworkshopYYYY.bib` (according to the settings in `workshop.xml`); `ceur-ws/temp.bib` is not included in the ZIP archive for upload to CEUR-WS.org.
+
+While you are working on `ceur-ws/temp.bib`, you can test it with `make bibtest.pdf` (which currently assumes plain old BibTeX, not Biber).
 
 License
 -------
