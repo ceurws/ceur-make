@@ -88,7 +88,7 @@ ceur-ws/temp.bib: toc.xml workshop.xml ceur-ws ID
 ceur-ws:
 	-[[ ! -d ceur-ws ]] && $(MKDIR) ceur-ws
 
-# At the moment, this rule only applies to the proc.pdf all-in-one proceedings file, which is generated from a LaTeX source.  Later we may also use it for regenerating the individual papers (see below)
+# At the moment, this rule only applies to bibtest.pdf and the proc.pdf all-in-one proceedings file, which is generated from a LaTeX source.  Later we may also use it for regenerating the individual papers (see below)
 %.pdf: %.tex
 	$(TEX2PDF) $<
 
