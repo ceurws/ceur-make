@@ -77,6 +77,10 @@ The BibTeX database, generated as `ceur-ws/temp.bib` may work out of the box wit
 
 For these reasons we force you to manually inspect and revise `ceur-ws/temp.bib` and copy it to `ceur-ws/yourworkshopYYYY.bib` (according to the settings in `workshop.xml`); `ceur-ws/temp.bib` is not included in the ZIP archive for upload to CEUR-WS.org.
 
+About page numbers you have two choices:
+1. If you generate an all-in-one PDF, please make sure you adapt the `pages` fields in your BibTeX entries.  They will have to be shifted as soon as the PDF includes material before the papers, such as a preface.
+2. If you do not generate an all-in-one PDF, please remove all `pages` fields.
+
 While you are working on `ceur-ws/temp.bib`, you can test it with `make bibtest.pdf` (which currently assumes plain old BibTeX, not Biber).
 
 License
