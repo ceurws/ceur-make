@@ -147,7 +147,7 @@
     <hr/>
     <span class="unobtrusive">
       <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/><br/>
-    <span property="dcterms:issued" content="yyyy-mm-dd" class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org
+    <span property="dcterms:issued" class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org
 |<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fceur-ws.org%2F{ $volume }%2F">valid HTML5</a>|
     </span>
     </body></html>
