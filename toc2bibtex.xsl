@@ -21,7 +21,7 @@
   <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
   <xsl:variable name="year" select="year-from-date(xs:date($workshop/date))"/>
   <xsl:variable name="workshop-id" select="concat($workshop/title/acronym, $year)"/>
-  <xsl:variable name="workshop-url" select="concat('http://ceur-ws.org/Vol-', $workshop/number)"/>
+  <xsl:variable name="workshop-url" select="concat('http://ceur-ws.org/Vol-', $workshop/number, '/')"/>
 
   <xsl:template name="entry">
       <xsl:param name="type"/>
