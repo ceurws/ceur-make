@@ -32,7 +32,7 @@
     <!-- homepage of the event -->
     <homepage>http://foobar2013.org</homepage>
 
-    <!-- main language of the proceedings (ISO 639-2/T language code, e.g. eng, ger, fre, spa, rus, ita, por, ..., or look up at https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes -->
+    <!-- main language of the proceedings (ISO 639-2/T language code, e.g. eng, deu, fra, spa, rus, ita, por, ..., or look up at https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes -->
     <language>eng</language>
     
     <!-- location and date of the event.  Note: if you create a BibTeX database to make it easier for others to cite your papers, this information will also be included.  If a LaTeX document author uses  BibLaTeX (http://ctan.org/pkg/biblatex), this information will be used. -->
