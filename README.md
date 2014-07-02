@@ -56,7 +56,7 @@ When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volum
 1. When creating a proceedings menu in EasyChair, use “9999” for the volume number (as this is currently hard-coded in ceur-make).
 2. Download the final proceedings as a ZIP file and unzip it into a directory.
 3. Copy the ceur-make scripts into that directory, so that they become siblings of the 9999PPPP per-paper directories, the README file, etc.
-4. Generate toc.xml by `make toc.xml` and adapt it manually.
+4. Generate toc.xml by `make toc.xml` and adapt it manually.  (If `make toc.xml` doesn't do its job, try to enforce it with `make -B toc.xml`.)
    * related issues: [#1](https://github.com/clange/ceur-make/issues/1)
 
 #### Manually adapting toc.xml ####
