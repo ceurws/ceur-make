@@ -40,7 +40,7 @@ Prerequisites
   
 On a recent Linux all of these components (except maybe Saxon) should be installable via the central package manager.  On Mac OS, most components should be installable via [MacPorts](http://www.macports.org/) or [Fink](http://fink.thetis.ig42.org/), on Windows via [Cygwin](http://cygwin.com/).
 
-ceur-make has not been tested on any other operating system than Linux so far; [reports] [5] from users of other systems are welcome.
+ceur-make has so far been tested on Linux and Windows (using Cygwin); [reports] [5] from users of other systems are welcome.
 
 How to use
 ----------
