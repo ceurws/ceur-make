@@ -12,6 +12,10 @@
 
 PAPER_DIRECTORIES = 999?????
 
+# reasonable defaults for things that Makefile.vars (see below) can override
+MKDIR = mkdir
+TEX2PDF = pdflatex
+
 # You first need to copy Makefile.vars.template to Makefile.vars and adapt the paths.
 include Makefile.vars
 
