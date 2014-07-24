@@ -19,7 +19,7 @@
   <xsl:output method="text"/>
 
   <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
-  <xsl:variable name="year" select="year-from-date(xs:date($workshop/date))"/>
+  <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
   <xsl:variable name="workshop-id" select="concat($workshop/title/acronym, $year)"/>
   <xsl:variable name="workshop-url" select="concat('http://ceur-ws.org/Vol-', $workshop/number, '/')"/>
 
@@ -165,7 +165,16 @@
               </xsl:call-template>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">eventdate</xsl:with-param>
-                  <xsl:with-param name="content" select="$workshop/date"/>
+                  <xsl:with-param name="content">
+                      <xsl:choose>
+                        <xsl:when test="$workshop/date/from and $workshop/date/to">
+                            <xsl:value-of select="concat($workshop/date/from, '/', $workshop/date/to)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$workshop/date"/>
+                        </xsl:otherwise>
+                      </xsl:choose>
+                  </xsl:with-param>
               </xsl:call-template>
           </xsl:with-param>
       </xsl:call-template>

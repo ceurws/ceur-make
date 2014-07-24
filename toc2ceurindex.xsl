@@ -20,7 +20,7 @@
   <xsl:output method="html" version="5.0"/><!-- xsl:output/@version is Saxon-specific -->
 
   <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
-  <xsl:variable name="year" select="year-from-date(xs:date($workshop/date))"/>
+  <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
   <xsl:variable name="pubyear" select="if ($workshop/pubyear) then $workshop/pubyear else $year"/>
   <xsl:variable name="id" select="concat($workshop/title/id, $year)"/>
   <xsl:variable name="number" select="if ($workshop/number) then $workshop/number else 'XXX'"/>
@@ -32,6 +32,7 @@
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
+              time: http://www.w3.org/2006/time#
               swc: http://data.semanticweb.org/ns/swc/ontology#
               xsd: http://www.w3.org/2001/XMLSchema#"
       typeof="bibo:Proceedings">
@@ -93,7 +94,30 @@
         </xsl:choose>
         
       </h3>
-      <h3><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', 'http://dbpedia.org/resource/') }"><xsl:value-of select="$workshop/location"/></span>, <span property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span></span>.</h3> 
+      <h3><span rel="bibo:presentedAt" typeof="bibo:Workshop" class="CEURLOCTIME"><span rel="event:place" resource="{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', 'http://dbpedia.org/resource/') }"><xsl:value-of select="$workshop/location"/></span>, <xsl:choose>
+      <xsl:when test="$workshop/date/from and $workshop/date/to">
+        <!--
+        Possible output formats:
+        different years: (December 31st, 2013) to (January 1st, 2014)
+        same year, different months: (November 30th) to (December 1st, 2013)
+        same year, same month: (December 30th) to (31st, 2013)
+        -->
+        <span rel="event:time">
+          <xsl:variable name="same-year" select="year-from-date($workshop/date/from) eq year-from-date($workshop/date/to)"/>
+          <xsl:variable name="same-year-and-month" select="$same-year and month-from-date($workshop/date/from) eq month-from-date($workshop/date/to)"/>
+          <span rel="time:hasBeginning">
+            <span property="time:inXSDDateTime" content="{ $workshop/date/from }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></span>
+          </span>
+          to
+          <span rel="time:hasEnd">
+            <span property="time:inXSDDateTime" content="{ $workshop/date/to }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></span>
+          </span>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <span property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span>
+      </xsl:otherwise>
+      </xsl:choose></span>.</h3> 
       <br/>
       <b> Edited by </b>
       <p>

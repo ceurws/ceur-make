@@ -17,7 +17,7 @@
 
   <xsl:template match="/">
     <xsl:variable name="workshop" select="/workshop"/>
-    <xsl:variable name="year" select="year-from-date(xs:date($workshop/date))"/>
+    <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
     <xsl:variable name="id" select="concat($workshop/title/id, $year)"/>
 
     <xsl:value-of select="$id"/>

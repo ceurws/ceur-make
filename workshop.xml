@@ -39,8 +39,13 @@
 
     <!-- location; please also look it up on the English Wikipedia (http://en.wikipedia.org) and copy that URL into href="..." -->
     <location href="http://en.wikipedia.org/wiki/Bremen">Bremen, Germany</location>
-    <!-- date of the event in YYYY-MM-DD format -->
+    <!-- date of a one-day event in YYYY-MM-DD format -->
     <date>2013-06-18</date>
+    <!-- alternatively: date of a multi-day event -->
+    <!-- <date> -->
+    <!--     <from>2013-06-18</from> -->
+    <!--     <to>2013-06-20</to> -->
+    <!-- </date> -->
     <!-- year in which the final papers of the proceedings were produced; uncomment and edit if different from the year in <date> -->
     <!--
     <pubyear>2014</pubyear>
