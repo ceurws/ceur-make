@@ -54,7 +54,7 @@
           </td>
           <td style="text-align: right; vertical-align: middle">
     
-            <span property="bibo:volume" content="{ $number }" class="CEURVOLNR"><xsl:value-of select="$volume"/></span> <br/>
+            <span property="bibo:volume" datatype="xsd:nonNegativeInteger" content="{ $number }" class="CEURVOLNR"><xsl:value-of select="$volume"/></span> <br/>
             <span property="bibo:uri dcterms:identifier" class="CEURURN">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</span>
             <p class="unobtrusive copyright" style="text-align: justify">Copyright © 
             <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers
@@ -146,7 +146,7 @@
         <xsl:for-each select="/toc/paper">
           <xsl:variable name="id" select="concat('paper-', format-number(position(), '00'))"/>
           <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
-          <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
+          <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
         <xsl:comment> TODO If your authors have FOAF profiles, manually add resource="foaf-profile" to each outer &lt;span rel="dcterms:creator"&gt;; otherwise, if they have homepages and you want to link to them, manually add rel="foaf:homepage" resource="homepage" to each inner &lt;span property="foaf:name"&gt;.&#xa;Then remove this comment. </xsl:comment> 
         <span class="CEURAUTHORS">
             <xsl:for-each select="authors/author">
