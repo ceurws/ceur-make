@@ -28,7 +28,7 @@
   <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
   <xsl:template match="/">
-    <xsl:comment> CEURVERSION=2013-12-11 </xsl:comment>
+    <xsl:comment> CEURVERSION=2014-09-18 </xsl:comment>
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
@@ -37,7 +37,7 @@
               xsd: http://www.w3.org/2001/XMLSchema#"
       typeof="bibo:Proceedings">
       <head>
-        <meta http-equiv="Content-type" content="text/html;charset=windows-1252"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
+        <meta http-equiv="Content-type" content="text/html;charset=utf-8"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
         <link rel="foaf:page" href="{ $volume-url }"/>
         <title>CEUR-WS.org/<xsl:value-of select="$volume"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
@@ -58,7 +58,7 @@
             <span property="bibo:uri dcterms:identifier" class="CEURURN">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</span>
             <p class="unobtrusive copyright" style="text-align: justify">Copyright © 
             <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers
-            by the papers' authors. Copying permitted only for private and academic purposes.
+            by the papers' authors. Copying permitted for private and academic purposes.
             This volume is published and copyrighted by its editors.</p>
     
           </td>
