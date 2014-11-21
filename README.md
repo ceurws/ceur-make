@@ -78,6 +78,12 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 * a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file will need manual post-processing; please read on below.
 * a ZIP archive for upload to CEUR-WS.org (via `make zip`)
 
+#### Manually adapting index.html ####
+
+If your editors have FOAF profiles, please consider manually adding `resource="foaf-profile"` in addition to `href="homepage"` for each editor.
+
+If your authors have FOAF profiles, manually add `resource="foaf-profile"` to each outer `<span rel="dcterms:creator">`; otherwise, if they have homepages and you want to link to them, manually add `rel="foaf:homepage" resource="homepage"` to each inner `<span property="foaf:name">`.
+
 #### Manually adapting the BibTeX database ####
 
 The BibTeX database, generated as `ceur-ws/temp.bib` may work out of the box with [BibLaTeX](http://www.ctan.org/tex-archive/help/Catalogue/entries/biblatex.html) and [Biber](http://biblatex-biber.sourceforge.net/) but usually requires manual revision, as ceur-make does not handle persons' names as intelligently as BibTeX, and as `bibtex` does not support Unicode names and identifiers.

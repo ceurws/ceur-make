@@ -118,11 +118,11 @@
         <span property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></span>
       </xsl:otherwise>
       </xsl:choose></span>.</h3> 
-      <br/>
+      <br/>&#xa;
       <b> Edited by </b>
       <p>
     
-      </p><xsl:comment> TODO If your editors have FOAF profiles, please manually add resource="foaf-profile" in addition to href="homepage" for each editor.&#xa;Then remove this comment. </xsl:comment><h3 rel="bibo:editor">
+      </p><h3 rel="bibo:editor">
       <xsl:for-each select="$workshop/editors/editor">
         <xsl:choose>
           <xsl:when test="homepage">
@@ -146,13 +146,12 @@
         <xsl:for-each select="/toc/paper">
           <xsl:variable name="id" select="concat('paper-', format-number(position(), '00'))"/>
           <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
-          <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>
-        <xsl:comment> TODO If your authors have FOAF profiles, manually add resource="foaf-profile" to each outer &lt;span rel="dcterms:creator"&gt;; otherwise, if they have homepages and you want to link to them, manually add rel="foaf:homepage" resource="homepage" to each inner &lt;span property="foaf:name"&gt;.&#xa;Then remove this comment. </xsl:comment> 
+          <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>&#xa;
         <span class="CEURAUTHORS">
             <xsl:for-each select="authors/author">
               <span rel="dcterms:creator"><span property="foaf:name"><xsl:value-of select="."/></span></span>
               <xsl:if test="position() ne last()">, </xsl:if>
-            </xsl:for-each></span><br/></li>
+            </xsl:for-each></span><br/></li>&#xa;
         </xsl:for-each>
       </ul>
     
