@@ -54,7 +54,7 @@
           </td>
           <td style="text-align: right; vertical-align: middle">
     
-            <span property="bibo:volume" datatype="xsd:nonNegativeInteger" content="{ $number }" class="CEURVOLNR"><xsl:value-of select="$volume"/></span> <br/>
+            <span property="bibo:volume" datatype="xsd:nonNegativeInteger" content="{ $number }" class="CEURVOLNR"><xsl:value-of select="$volume"/></span> <br/>&#xa;
             <span property="bibo:uri dcterms:identifier" class="CEURURN">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</span>
             <p class="unobtrusive copyright" style="text-align: justify">Copyright © 
             <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers
@@ -67,15 +67,15 @@
     
       <hr/>
     
-      <br/><br/><br/>
+      <br/><br/><br/>&#xa;
     
-      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>
+      <h1><a rel="foaf:homepage" href="{ $workshop/homepage }"><span about="" property="bibo:shortTitle" class="CEURVOLACRONYM"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></span></a><br/>&#xa;
       <span property="dcterms:alternative" class="CEURVOLTITLE"><xsl:value-of select="$workshop/title/volume"/></span></h1>
     
       <br/>
     
       <h3>
-        <span property="dcterms:title" class="CEURFULLTITLE">Proceedings of the <xsl:value-of select="$workshop/title/full"/></span><br/>
+        <span property="dcterms:title" class="CEURFULLTITLE"><xsl:value-of select="$workshop/title/full"/></span><br/>&#xa;
         <xsl:choose>
           <xsl:when test="$workshop/conference">
             co-located with <xsl:if test="$workshop/conference/full"><xsl:value-of select="$workshop/conference/full"/> (</xsl:if>
@@ -86,7 +86,7 @@
               <xsl:otherwise>
                 <span class="CEURCOLOCATED"><xsl:value-of select="$workshop/conference/acronym"/></span>
               </xsl:otherwise>
-            </xsl:choose><xsl:if test="$workshop/conference/full">)</xsl:if><br/>
+            </xsl:choose><xsl:if test="$workshop/conference/full">)</xsl:if><br/>&#xa;
           </xsl:when>
           <xsl:otherwise>
             <xsl:comment> co-located with &lt;span class="CEURCOLOCATED"&gt;NONE&lt;/span&gt; </xsl:comment>
@@ -131,13 +131,13 @@
           <xsl:otherwise>
             <span about="_:{ generate-id() }" property="foaf:name" class="CEURVOLEDITOR"><xsl:value-of select="name"/></span>
           </xsl:otherwise>
-        </xsl:choose>, <xsl:value-of select="affiliation"/>, <xsl:value-of select="country"/><br/>
+        </xsl:choose>, <xsl:value-of select="affiliation"/>, <xsl:value-of select="country"/><br/>&#xa;
       </xsl:for-each>
     </h3>
     
     <hr/>
     
-    <br/><br/><br/>
+    <br/><br/><br/>&#xa;
     
     <div class="CEURTOC">
       <h2> Table of Contents </h2>
