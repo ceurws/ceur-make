@@ -28,7 +28,7 @@
   <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
   <xsl:template match="/">
-    <xsl:comment> CEURVERSION=2014-09-18 </xsl:comment>
+    <xsl:comment> CEURVERSION=2014-10-12 </xsl:comment>
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
