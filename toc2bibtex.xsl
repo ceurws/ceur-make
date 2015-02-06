@@ -68,6 +68,17 @@
   </xsl:function>
 
   <xsl:template match="paper">
+      <xsl:variable name="paperurl">
+	  <xsl:choose>
+	      <xsl:when test="@id != ''">
+		  <xsl:value-of select="concat($workshop-url, '#', @id)"/>
+	      </xsl:when>
+	      <xsl:otherwise>
+		  <xsl:value-of select="concat($workshop-url, '#paper-', format-number(position(), '00'))"/>
+	      </xsl:otherwise>
+	  </xsl:choose>
+      </xsl:variable>
+      
       <xsl:call-template name="entry">
           <xsl:with-param name="type">inproceedings</xsl:with-param>
           <xsl:with-param name="id" select="concat(ex:id-from-authors(authors), ':', $workshop-id)"/>
@@ -88,7 +99,7 @@
               </xsl:if>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">url</xsl:with-param>
-                  <xsl:with-param name="content" select="concat($workshop-url, '#paper-', format-number(position(), '00'))"/>
+                  <xsl:with-param name="content" select="$paperurl"/>
               </xsl:call-template>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">crossref</xsl:with-param>

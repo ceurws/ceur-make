@@ -144,7 +144,16 @@
     
       <ul rel="dcterms:hasPart">
         <xsl:for-each select="/toc/paper">
-          <xsl:variable name="id" select="concat('paper-', format-number(position(), '00'))"/>
+	  <xsl:variable name="id">
+	    <xsl:choose>
+	      <xsl:when test="@id != ''">
+		<xsl:value-of select="@id"/>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<xsl:value-of select="concat('paper-', format-number(position(), '00'))"/>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:variable>
           <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
           <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>&#xa;
         <span class="CEURAUTHORS">
