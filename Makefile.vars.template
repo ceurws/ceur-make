@@ -8,6 +8,9 @@
 #
 # Licensed under GPLv3 or any later version
 
+# path to your GNU bash installation
+SHELL = /bin/bash
+
 # path to your Saxon-HE 9 jar for XSLT processing
 SAXON = java -jar /home/clange/tools/saxon/saxon9he.jar
 
