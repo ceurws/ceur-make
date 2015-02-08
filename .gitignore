@@ -1,2 +1,8 @@
+ceur-ws/
 .DS_Store
-*~
++*~
+.ceur-make-initrc
+ID
+Makefile.vars
+ceur-ws.css
+copyright-form.txt
