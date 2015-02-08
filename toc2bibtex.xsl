@@ -4,11 +4,9 @@
 
     The BibTeX entries contain some fields only supported by BibLaTeX (http://ctan.org/pkg/biblatex), which is strongly recommended for using this BibTeX database, but it will also be usable with plain BibTeX.
     
-    Part of ceur-make (https://github.com/clange/ceur-make/)
+    Part of ceur-make (https://github.com/ceurws/ceur-make/)
 
-    TODO add further documentation
-    
-    © Christoph Lange 2012–2013
+    © Christoph Lange and contributors 2012–2015
     
     Licensed under GPLv3 or any later version
 -->

@@ -1,12 +1,12 @@
 # Makefile to control the generation of CEUR-WS.org proceedings volumes
 #
-# Part of ceur-make (https://github.com/clange/ceur-make/)
+# Part of ceur-make (https://github.com/ceurws/ceur-make/)
 # 
 # Note:
 # * Some steps require further manual work.
 # * There are still a lot of hard-coded assumptions in this implementation.
 #
-# © Christoph Lange 2012–2013
+# © Christoph Lange and contributors 2012–2015
 #
 # Licensed under GPLv3 or any later version
 

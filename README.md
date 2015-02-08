@@ -57,7 +57,7 @@ When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volum
 2. Download the final proceedings as a ZIP file and unzip it into a directory.
 3. Copy the ceur-make scripts into that directory, so that they become siblings of the 9999PPPP per-paper directories, the README file, etc.
 4. Generate toc.xml by `make toc.xml` and adapt it manually.  (If `make toc.xml` doesn't do its job, try to enforce it with `make -B toc.xml`.)
-   * related issues: [#1](https://github.com/clange/ceur-make/issues/1)
+   * related issues: [#1](https://github.com/ceurws/ceur-make/issues/1)
 
 #### Manually adapting toc.xml ####
 
@@ -107,4 +107,4 @@ This code is licensed under [GPL version 3](LICENSE) or any later version.
  [2]: http://easychair.org "EasyChair"
  [3]: http://ceur-ws.org/Vol-XXX/index.html "index.html"
  [4]: http://ceur-ws.org/Non-Ex-Publication-Permission-Template.txt "copyright form"
- [5]: https://github.com/clange/ceur-make/issues "issues"
+ [5]: https://github.com/ceurws/ceur-make/issues "issues"
