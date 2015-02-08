@@ -92,6 +92,12 @@ For these reasons we force you to manually inspect and revise `ceur-ws/temp.bib`
 
 While you are working on `ceur-ws/temp.bib`, you can test it with `make bibtest.pdf` (which currently assumes plain old BibTeX, not Biber).
 
+Contributors
+------------
+
+* [Christoph Lange](http://langec.wordpress.com)
+* [Alexandre Rademaker](https://github.com/arademaker)
+
 License
 -------
 
