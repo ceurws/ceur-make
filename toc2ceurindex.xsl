@@ -26,7 +26,7 @@
   <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
   <xsl:template match="/">
-    <xsl:comment> CEURVERSION=2014-10-12 </xsl:comment>
+    <xsl:comment> CEURVERSION=2015-06-27 </xsl:comment>
     <html
       prefix="bibo: http://purl.org/ontology/bibo/
               event: http://purl.org/NET/c4dm/event.owl#
@@ -36,6 +36,7 @@
       typeof="bibo:Proceedings">
       <head>
         <meta http-equiv="Content-type" content="text/html;charset=utf-8"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
         <link rel="foaf:page" href="{ $volume-url }"/>
         <title>CEUR-WS.org/<xsl:value-of select="$volume"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
