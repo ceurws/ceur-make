@@ -93,8 +93,8 @@
                                         <xsl:value-of select="$workshop/conference/acronym"/>
                                     </xsl:otherwise>
                                 </xsl:choose>
-                                <xsl:if test="$workshop/conference/full">)</xsl:if>
                                 </span>
+                                <xsl:if test="$workshop/conference/full">)</xsl:if>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:comment> co-located with &lt;span class="CEURCOLOCATED"&gt;NONE&lt;/span&gt; </xsl:comment>
