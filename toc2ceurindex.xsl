@@ -3,12 +3,12 @@
     Generates a CEUR-WS.org compliant index.html page from toc.xml and workshop.xml; executed by “make ceur-ws/index.html”
 
     Compliance usually holds for the time when this code was last revised.
-    
+
     Part of ceur-make (https://github.com/ceurws/ceur-make/)
 
     © Christoph Lange and contributors 2012–2015
     Sarven Capadisli 2015
-    
+
     Licensed under GPLv3 or any later version
 -->
 <!-- Template: http://ceur-ws.org/Vol-XXX/index.html -->
@@ -16,7 +16,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="xs"
                 version="2.0">
-    <xsl:output method="xml" omit-xml-declaration="yes" encoding="us-ascii" indent="no"/>
+    <xsl:output method="xml" omit-xml-declaration="yes" encoding="us-ascii" indent="yes"/>
 
     <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
     <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
@@ -141,7 +141,7 @@
                 <section id="table-of-contents" about="[this:]" rel="schema:hasPart" resource="[this:#table-of-contents]">
                     <h2 about="[this:#table-of-contents]" property="schema:name">Table of Contents</h2>
                     <div about="[this:#table-of-contents]" property="schema:description">
-                        <ul>
+                        <ol>
                             <xsl:for-each select="/toc/paper">
                                 <xsl:variable name="id">
                                     <xsl:choose>
@@ -171,7 +171,7 @@
                                 </dl>
                             </li>
                             </xsl:for-each>
-                        </ul>
+                        </ol>
                     </div>
                 </section>
 
