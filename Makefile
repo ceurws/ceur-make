@@ -56,7 +56,7 @@ toc.xml:
 
 # creates a CEUR-WS.org compliant index.html file
 ceur-ws/index.html: toc.xml workshop.xml ceur-ws/paper-01.pdf
-	$(SAXON) $< toc2ceurindex.xsl \
+	$(SAXON) $$( [[ -e proc.pdf ]] && echo all-in-one=true) $< toc2ceurindex.xsl \
 	> $@
 
 # # Old implementation of this rule, while US-ASCII output was required:

@@ -17,6 +17,8 @@
                 version="2.0">
   <xsl:output method="html" version="5.0"/><!-- xsl:output/@version is Saxon-specific -->
 
+  <xsl:param name="all-in-one" select="false()" as="xs:boolean"/>
+  
   <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
   <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
   <xsl:variable name="pubyear" select="if ($workshop/pubyear) then $workshop/pubyear else $year"/>
@@ -165,11 +167,13 @@
     
     </div>
     
-    <p rel="dcterms:relation">
-      <xsl:variable name="pdf" select="concat($id, '-complete.pdf')"/>
-      <span about="{ $pdf }" typeof="bibo:Document">
-      The whole proceedings can also be downloaded as a single file (<span property="dcterms:format" content="application/pdf"/><a property="bibo:uri" content="{ $volume-url }{ $pdf }" href="{ $pdf }">PDF</a>, including title pages, preface, and table of contents).
-    </span></p>
+    <xsl:if test="$all-in-one">
+      <p rel="dcterms:relation">
+        <xsl:variable name="pdf" select="concat($id, '-complete.pdf')"/>
+        <span about="{ $pdf }" typeof="bibo:Document">
+        The whole proceedings can also be downloaded as a single file (<span property="dcterms:format" content="application/pdf"/><a property="bibo:uri" content="{ $volume-url }{ $pdf }" href="{ $pdf }">PDF</a>, including title pages, preface, and table of contents).
+      </span></p>
+    </xsl:if>
     
     <p>
       We offer a <a href="{ $id }.bib">BibTeX file</a> for citing papers of this workshop from LaTeX.
