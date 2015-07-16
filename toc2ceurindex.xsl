@@ -72,12 +72,12 @@
         </header>
 
         <article class="h-entry">
-            <h1><a class="CEURVOLACRONYM" rel="foaf:homepage" href="{ $workshop/homepage }" property="bibo:shortTitle schema:alternateName"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></a><xsl:text> </xsl:text><span class="p-name CEURVOLTITLE" property="schema:name"><xsl:value-of select="$workshop/title/volume"/></span></h1>
+            <h1><a class="CEURVOLACRONYM" rel="foaf:homepage" href="{ $workshop/homepage }" property="bibo:shortTitle schema:alternateName"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></a><xsl:text> </xsl:text><span class="CEURVOLTITLE p-name" property="schema:name"><xsl:value-of select="$workshop/title/volume"/></span></h1>
 
                 <dl id="document-event" class="h-event" about="[this:]" rel="bibo:presentedAt" resource="[this:#event]">
                     <dt typeof="schema:Event">Event</dt>
                     <dd class="p-summary" property="schema:description">
-                        <span class="p-name CEURFULLTITLE" property="schema:name"><xsl:value-of select="$workshop/title/full"/></span>
+                        <span class="CEURFULLTITLE p-name" property="schema:name"><xsl:value-of select="$workshop/title/full"/></span>
                         <xsl:choose>
                             <xsl:when test="$workshop/conference">
                                 <xsl:text> co-located with </xsl:text>
@@ -100,7 +100,7 @@
                         </xsl:choose>
                     </dd>
                     <dt>Location</dt>
-                    <dd class="p-location CEURLOCTIME" rel="schema:location" resource="{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', 'http://dbpedia.org/resource/') }"><xsl:value-of select="$workshop/location"/></dd>
+                    <dd class="CEURLOCTIME p-location" rel="schema:location" resource="{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', 'http://dbpedia.org/resource/') }"><xsl:value-of select="$workshop/location"/></dd>
                     <dt>Date</dt>
                     <dd class="CEURLOCTIME">
                         <xsl:choose>
