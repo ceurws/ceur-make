@@ -97,6 +97,7 @@ Contributors
 * [Christoph Lange](http://langec.wordpress.com)
 * [Friederike Klan](http://fusion.cs.uni-jena.de/professur/about-us/team/friederike-klan)
 * [Alexandre Rademaker](https://github.com/arademaker)
+* [Sarven Capadisli](http://csarven.ca/)
 
 License
 -------
