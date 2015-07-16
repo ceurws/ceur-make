@@ -33,7 +33,6 @@ Prerequisites
 * [GNU make](http://www.gnu.org/software/make/) (any recent version should be sufficient)
 * [GNU bash](http://www.gnu.org/software/bash/) (any recent version should be sufficient)
 * [Saxon-HE 9](http://saxon.sourceforge.net) (other XSLT 2 processors might work as well, but the Makefile currently assumes Saxon, and ceur-make has been tested with Saxon-HE 9.5)
-* [Recode](http://recode.progiciels-bpi.ca/index.html) (for post-processing the index.html file)
 * Optional:
   * [Perl 5](http://www.perl.org/) (for processing EasyChair proceedings; any recent version should be sufficient)
   * TeX (for generating an all-in-one proceedings file; any recent version should be sufficient; tested with [TeX Live 2012](http://www.tug.org/texlive/))
