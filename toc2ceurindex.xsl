@@ -16,7 +16,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 exclude-result-prefixes="xs"
                 version="2.0">
-    <xsl:output method="xml" omit-xml-declaration="yes" encoding="us-ascii" indent="yes"/>
+    <xsl:output include-content-type="no" method="xhtml" omit-xml-declaration="yes" encoding="utf-8" indent="yes"/>
 
     <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
     <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
@@ -28,7 +28,6 @@
 
     <xsl:template match="/">
 <!-- <xsl:comment>CEURVERSION=2015-07-01</xsl:comment> -->
-<!-- <xsl:comment>CEURLANG=<xsl:value-of select="$workshop/language"/></xsl:comment> -->
 <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;
 </xsl:text>
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -43,8 +42,7 @@
         <xsl:text disable-output-escaping="yes"><![CDATA[
         <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="http://linked-research.270a.info/scripts/html.sortable.min.js"></script>
-        <script src="http://linked-research.270a.info/scripts/lr.js"></script>]]>
-    </xsl:text>
+        <script src="http://linked-research.270a.info/scripts/lr.js"></script>]]></xsl:text>
     </head>
 
     <body about="[this:]" typeof="schema:Article bibo:Proceedings sioc:Post prov:Entity" class="h-feed" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ v: http://www.w3.org/2006/vcard/ns# pimspace: http://www.w3.org/ns/pim/space# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: http://schema.org/ sioc: http://rdfs.org/sioc/ns# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# cal: http://www.w3.org/2002/12/cal/ical# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# bibo: http://purl.org/ontology/bibo/ dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ this: {$volume-url}">
