@@ -55,15 +55,19 @@ toc.xml:
 	echo '</toc>'
 
 # creates a CEUR-WS.org compliant index.html file
-# 
-# recode u8..h : assume UTF8-input; encode everything using HTML entities (e.g. © → &copy;)
-# recode h0.. : decode XML-standalone entities (e.g. &lt; → <)
-# effective result: HTML with all special characters encoded as entities
 ceur-ws/index.html: toc.xml workshop.xml ceur-ws/paper-01.pdf
 	$(SAXON) $< toc2ceurindex.xsl \
-        | recode u8..h \
-        | recode h0..u8 \
-        > $@
+	> $@
+
+# # Old implementation of this rule, while US-ASCII output was required:
+# # recode u8..h : assume UTF8-input; encode everything using HTML entities (e.g. © → &copy;)
+# # recode h0.. : decode XML-standalone entities (e.g. &lt; → <)
+# # effective result: HTML with all special characters encoded as entities
+# ceur-ws/index.html: toc.xml workshop.xml ceur-ws/paper-01.pdf
+# 	$(SAXON) $< toc2ceurindex.xsl \
+#         | recode u8..h \
+#         | recode h0..u8 \
+#         > $@
 
 # from workshop.xml, which you have to provide manually, this generates a file that contains the a shorthand identifier for this proceedings volume; this will be used to create some of the further filenames.
 ID: workshop.xml
