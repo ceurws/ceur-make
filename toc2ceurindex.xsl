@@ -18,6 +18,8 @@
                 version="2.0">
     <xsl:output include-content-type="no" method="xhtml" omit-xml-declaration="yes" encoding="utf-8" indent="yes"/>
 
+    <xsl:param name="all-in-one" select="false()" as="xs:boolean"/>
+
     <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
     <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
     <xsl:variable name="pubyear" select="if ($workshop/pubyear) then $workshop/pubyear else $year"/>
@@ -27,8 +29,9 @@
     <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
     <xsl:template match="/">
-<!-- <xsl:comment>CEURVERSION=2015-07-01</xsl:comment> -->
-<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+<xsl:comment> CEURVERSION=2015-06-27 </xsl:comment>
+<xsl:text>
 </xsl:text>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en" lang="en">
@@ -225,7 +228,9 @@
                     </div>
                 </section>
 
+                <xsl:if test="$all-in-one">
                 <p>The whole proceedings can also be downloaded as a single file (<a rel="dcterms:format" href="{concat($id, '-complete.pdf')}">PDF</a>, including title pages, preface, and table of contents).</p>
+                </xsl:if>
                 <p>We offer a <a href="{$id}.bib">BibTeX file</a> for citing papers of this workshop from LaTeX.</p>
             </div>
         </article>
