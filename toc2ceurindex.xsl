@@ -103,7 +103,7 @@
                         </xsl:choose>
                     </dd>
                     <dt>Location</dt>
-                    <dd class="CEURLOCTIME p-location" rel="schema:location" resource="{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', 'http://dbpedia.org/resource/') }"><xsl:value-of select="$workshop/location"/></dd>
+                    <dd class="CEURLOCTIME p-location" rel="schema:location" resource="[dbr:{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', '') }]"><xsl:value-of select="$workshop/location"/></dd>
                     <dt>Date</dt>
                     <dd class="CEURLOCTIME">
                         <xsl:choose>
