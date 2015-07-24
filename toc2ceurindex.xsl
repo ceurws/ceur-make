@@ -142,29 +142,15 @@
     
     <div class="CEURTOC">
       <h2> Table of Contents </h2>
-    
-      <ul rel="dcterms:hasPart">
-        <xsl:for-each select="/toc/paper">
-	  <xsl:variable name="id">
-	    <xsl:choose>
-	      <xsl:when test="@id != ''">
-		<xsl:value-of select="@id"/>
-	      </xsl:when>
-	      <xsl:otherwise>
-		<xsl:value-of select="concat('paper-', format-number(position(), '00'))"/>
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </xsl:variable>
-          <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
-          <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>&#xa;
-        <span class="CEURAUTHORS">
-            <xsl:for-each select="authors/author">
-              <span rel="dcterms:creator"><span property="foaf:name"><xsl:value-of select="."/></span></span>
-              <xsl:if test="position() ne last()">, </xsl:if>
-            </xsl:for-each></span><br/></li>&#xa;
-        </xsl:for-each>
-      </ul>
-    
+
+      <!-- <toc> is expected to either contain a sequence of <paper> elements or a sequence of <session> elements.  However we also gracefully handle the occurrence of both, in which case we first output all <paper>s without a session, then the <session>s. -->
+      <xsl:if test="/toc/paper">
+        <ul rel="dcterms:hasPart">
+          <xsl:apply-templates select="/toc/paper"/>
+        </ul>
+      </xsl:if>
+
+      <xsl:apply-templates select="/toc/session"/>
     </div>
     
     <xsl:if test="$all-in-one">
@@ -186,7 +172,37 @@
 |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2F{ $volume }%2F">valid HTML5</a>|
     </span>
     </body></html>
+  </xsl:template>
+
+  <xsl:template match="session">
+    <h3><span class="CEURSESSION">Session <xsl:number/><xsl:if test="title">
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="title"/>
+    </xsl:if></span></h3>
+
+    <ul rel="dcterms:hasPart">
+      <xsl:apply-templates select="paper"/>
+    </ul>
+  </xsl:template>
     
+  <xsl:template match="paper">
+    <xsl:variable name="id">
+      <xsl:choose>
+        <xsl:when test="@id != ''">
+          <xsl:value-of select="@id"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="concat('paper-', format-number(position(), '00'))"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
+    <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>&#xa;
+    <span class="CEURAUTHORS">
+      <xsl:for-each select="authors/author">
+        <span rel="dcterms:creator"><span property="foaf:name"><xsl:value-of select="."/></span></span>
+        <xsl:if test="position() ne last()">, </xsl:if>
+        </xsl:for-each></span><br/></li>&#xa;
   </xsl:template>
 </xsl:stylesheet>
 
