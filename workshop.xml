@@ -13,7 +13,7 @@
 -->
 <workshop>
     <title>
-        <!-- ID used (in conjunction with the year) to name some of the generated files -->
+        <!-- ID used to name some of the generated files.  The year, defined in <date> below, will usually be appended to this. -->
         <id>foobar</id>
         <!-- acronym of the event -->
         <acronym>FooBar</acronym>
