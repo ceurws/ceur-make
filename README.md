@@ -50,20 +50,31 @@ To get started, you need to copy the ceur-make scripts into the directory in whi
 
 ### Export from EasyChair (optional) ###
 
-When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volume, ceur-make can automatically generate the XML table of contents from the EasyChair volume information.  Note that, for the purpose of ceur-make, LNCS just means that EasyChair will provide the proceedings for download in a ZIP file with a certain structure.  It doesn't mean that your proceedings will be published with Springer, nor that the papers have to be in the LNCS layout.
+When you use [EasyChair] [2] and instruct it to create an LNCS proceedings volume, ceur-make can automatically generate the XML table of contents (`toc.xml`) from the EasyChair volume information.  Note that, for the purpose of ceur-make, “LNCS” just means that EasyChair will provide the proceedings for download in a ZIP file with a certain structure.  It doesn't mean that your proceedings will be published with Springer, nor that the papers have to be in the LNCS layout.
 
 1. When creating a proceedings menu in EasyChair, use “9999” for the volume number (as this is currently hard-coded in ceur-make).
 2. Download the final proceedings as a ZIP file and unzip it into a directory.
 3. Copy the ceur-make scripts into that directory, so that they become siblings of the 9999PPPP per-paper directories, the README file, etc.
-4. Generate toc.xml by `make toc.xml` and adapt it manually.  (If `make toc.xml` doesn't do its job, try to enforce it with `make -B toc.xml`.)
+4. Generate `toc.xml` by `make toc.xml` and adapt it manually if needed; see below.  (If `make toc.xml` doesn't do its job, try to enforce it with `make -B toc.xml`.)
    * related issues: [#1](https://github.com/ceurws/ceur-make/issues/1)
 
-#### Manually adapting toc.xml ####
+#### Manually writing or adapting toc.xml ####
 
-If you would like to publish an all-in-one PDF it makes sense to use page numbers; otherwise it doesn't.  Therefore …
+When you do not generate `toc.xml` from [EasyChair] [2], as explained above, you will have to write it manually, following [the example](toc.xml).
 
-1. If you have an all-in-one PDF, please make sure you adapt the `pages` entries.  They will have to be shifted as soon as the PDF includes material before the papers, such as a preface, and if this material uses the same counter as the papers' pages, e.g. if the preface doesn't use Roman numerals.
-2. If you do not generate an all-in-one PDF, please remove all `pages` entries.
+If it has been generated from EasyChair, the following special situtations may require manual adaptation of `toc.xml`.
+
+##### Sessions #####
+
+EasyChair does not support workshops having multiple sessions.  If your workshop has multiple sessions, you need to insert them manually into `toc.xml`; see the [example file](toc.xml).
+
+##### Page numbers #####
+
+Page numbers are an optional feature, but `make toc.xml` generates page number information from the EasyChair metadata.
+
+If you do not wish to use page numbers, please remove all `pages` entries from `toc.xml`.
+
+If you wish to use page numbers and would also like to publish an all-in-one PDF, please make sure you adapt the `pages` entries to match the all-in-one PDF.  They will have to be shifted as soon as the all-in-one PDF includes material before the papers, such as a preface, and if this material uses the same counter as the papers' pages, e.g. if the preface doesn't use Roman numerals.
 
 ### Generating CEUR-WS.org proceedings ###
 
@@ -73,13 +84,15 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 
 * [the index.html file] [3] (via `make`, or specifically `make ceur-ws/index.html`)
 * [the copyright form] [4] (via `make`, or specifically `make copyright-form.txt`)
-* a LaTeX table of contents to help with generating an all-in-one PDF version of the proceedings (via `make`, or specifically `make toc.tex`)
+* a LaTeX table of contents to help with generating an all-in-one PDF version of the proceedings (via `make`, or specifically `make toc.tex`).  The all-in-one PDF is assumed to have the name `proc.pdf`.
 * a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file will need manual post-processing; please read on below.
 * a ZIP archive for upload to CEUR-WS.org (via `make zip`)
 
 #### Manually adapting index.html ####
 
 Some features of the [a CEUR-WS.org index.html template] [3] are not yet supported by ceur-make and will require manual adaptation.  This includes the distinction between regular papers and “AUX” papers, which are not to be indexed in publication databases.
+
+“Joint volume” proceedings comprising papers from multiple workshops also require manual work.  See [Vol-1010](http://ceur-ws.org/Vol-1010/) as an example for such a volume; however be aware that the [index.html template] [3] has changed meanwhile, i.e. you should not literally copy source code from old tables of content.
 
 If your editors have FOAF profiles, please consider manually adding `resource="foaf-profile"` in addition to `href="homepage"` for each editor.
 
