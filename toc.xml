@@ -12,12 +12,27 @@
     Licensed under GPLv3 or any later version
 -->
 <toc>
+    <!-- If your workshop has no sessions, use <paper>...</paper> immediately below <toc> -->
+    <session>
+        <title>title of first session</title>
 	<paper>
-		<title>title of first paper</title>
-		<pages from="2" to="6"/>
-		<authors>
-			<author>Alice Carroll</author>
-			<author>Bob Lewis</author>
-		</authors>
-	</paper>
+            <title>title of first paper</title>
+            <pages from="2" to="6"/>
+            <authors>
+                <author>Alice Carroll</author>
+                <author>Bob Lewis</author>
+            </authors>
+        </paper>
+    </session>
+    <session>
+        <title>title of second session</title>
+	<paper>
+            <title>title of second paper</title>
+            <pages from="7" to="10"/>
+            <authors>
+                <author>Alice Carroll</author>
+                <author>Bob Lewis</author>
+            </authors>
+        </paper>
+    </session>
 </toc>
