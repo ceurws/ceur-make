@@ -30,7 +30,7 @@ all: ceur-ws/index.html ceur-ws/temp.bib copyright-form.txt toc.tex
 copyright-form.txt: workshop.xml
 	$(SAXON) $< copyright-form.xsl > $@
 
-# creates a LaTeX table of contents
+# creates a LaTeX table of contents for the optional all-in-one PDF (which is assumed to be named proc.pdf)
 #
 # This should be included into your proc.tex file via
 # \input{toc}
