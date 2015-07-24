@@ -79,6 +79,8 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 
 #### Manually adapting index.html ####
 
+Some features of the [a CEUR-WS.org index.html template] [3] are not yet supported by ceur-make and will require manual adaptation.  This includes the distinction between regular papers and “AUX” papers, which are not to be indexed in publication databases.
+
 If your editors have FOAF profiles, please consider manually adding `resource="foaf-profile"` in addition to `href="homepage"` for each editor.
 
 If your authors have FOAF profiles, manually add `resource="foaf-profile"` to each outer `<span rel="dcterms:creator">`; otherwise, if they have homepages and you want to link to them, manually add `rel="foaf:homepage" resource="homepage"` to each inner `<span property="foaf:name">`.
