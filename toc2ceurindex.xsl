@@ -27,6 +27,10 @@
   <xsl:variable name="volume" select="concat('Vol-', $number)"/>
   <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
+  <xsl:variable name="multi-session" select="exists(/toc/session)" as="xs:boolean"/>
+  <!-- for performance reasons, the following variable only has a well-defined value when there are multiple sessions, as otherwise we don't need it: -->
+  <xsl:variable name="all-papers-across-sessions" select="if ($multi-session) then /toc//paper else ()"/>
+
   <xsl:template match="/">
     <xsl:comment> CEURVERSION=2015-06-27 </xsl:comment>
     <html
@@ -192,7 +196,27 @@
           <xsl:value-of select="@id"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="concat('paper-', format-number(position(), '00'))"/>
+          <!-- determine the number of this <paper> element among all <paper> elements in document order (including those in different <session> branches)-->
+          <!-- http://stackoverflow.com/a/3562716/2397768 -->
+          <xsl:variable name="position">
+            <xsl:choose>
+              <xsl:when test="$multi-session">
+                <xsl:variable name="prev-papers-in-same-session" select="preceding::paper"/>
+                <xsl:variable name="ancestors" select="ancestor::node()"/>
+                <!-- $ns1[count(.|$ns2) = count($ns2)] == $ns1 intersect $ns2 -->
+                <xsl:variable name="prev-papers-in-other-branches" select="
+                  $all-papers-across-sessions
+                    [count(.|$prev-papers-in-same-session) = count($prev-papers-in-same-session)
+                    or
+                    count(.|$ancestors) = count($ancestors)]"/>
+                <xsl:value-of select="count($prev-papers-in-other-branches) + 1"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="position()"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <xsl:value-of select="concat('paper-', format-number($position, '00'))"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
