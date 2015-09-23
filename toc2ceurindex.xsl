@@ -53,7 +53,7 @@
                 <dt>URN</dt>
                 <dd class="CEURURN" property="bibo:uri" xml:lang="" lang="">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</dd>
                 <dt>Volume</dt>
-                <dd class="CEURVOLNR" property="schema:volumeNumber" xml:lang="" lang=""><xsl:value-of select="$volume"/></dd>
+                <dd class="CEURVOLNR" property="bibo:volume" xml:lang="" lang=""><xsl:value-of select="$volume"/></dd>
             </dl>
 
             <dl id="document-language">
@@ -114,7 +114,7 @@
                             <time property="schema:endDate" content="{ $workshop/date/to }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
                         </xsl:when>
                         <xsl:otherwise>
-                            <time property="dcterms:date" content="{ $workshop/date }" datatype="xsd:date" datetime="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
+                            <time property="schema:startDate schema:endDate" content="{ $workshop/date }" datatype="xsd:date" datetime="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
                         </xsl:otherwise>
                     </xsl:choose>
                 </dd>
@@ -201,7 +201,7 @@
                                             <xsl:if test="pages">
                                             <dl class="pages">
                                                 <dt>Pages</dt>
-                                                <dd class="CEURPAGES"><span about="[this:#{$id}]" property="schema:pageStart"  datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>–<span about="[this:#{$id}]" property="schema:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></dd>
+                                                <dd class="CEURPAGES"><span about="[this:#{$id}]" property="schema:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>–<span about="[this:#{$id}]" property="schema:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></dd>
                                             </dl>
                                             </xsl:if>
                                             <dl class="authors">
@@ -224,7 +224,7 @@
                 </section>
 
                 <xsl:if test="$all-in-one">
-                <p>The whole proceedings can also be downloaded as a single file (<a rel="dcterms:format" href="{concat($id, '-complete.pdf')}">PDF</a>, including title pages, preface, and table of contents).</p>
+                <p>The whole proceedings can also be downloaded as a single file (<a rel="rdfs:seeAlso" href="{concat($id, '-complete.pdf')}">PDF</a>, including title pages, preface, and table of contents).</p>
                 </xsl:if>
                 <p>We offer a <a href="{$id}.bib">BibTeX file</a> for citing papers of this workshop from LaTeX.</p>
             </div>
