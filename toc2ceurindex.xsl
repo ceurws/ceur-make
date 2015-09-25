@@ -50,10 +50,10 @@
             <dl id="document-identifier">
                 <dt>Document ID</dt>
                 <dd><a href="{$volume-url}"><xsl:value-of select="$volume-url"/></a></dd>
-                <dt>URN</dt>
-                <dd class="CEURURN" property="bibo:uri" xml:lang="" lang="">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</dd>
                 <dt>Volume</dt>
                 <dd class="CEURVOLNR" property="bibo:volume" xml:lang="" lang=""><xsl:value-of select="$volume"/></dd>
+                <dt>URN</dt>
+                <dd class="CEURURN" property="bibo:uri" xml:lang="" lang="">urn:nbn:de:0074-<xsl:value-of select="$number"/>-C</dd>
             </dl>
 
             <dl id="document-language">
