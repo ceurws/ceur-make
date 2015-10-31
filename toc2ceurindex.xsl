@@ -28,6 +28,9 @@
     <xsl:variable name="volume" select="concat('Vol-', $number)"/>
     <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/', $volume, '/')"/>
 
+    <xsl:variable name="multi-session" select="exists(/toc/session)" as="xs:boolean"/>
+    <xsl:variable name="all-papers-across-sessions" select="if ($multi-session) then /toc//paper else ()"/>
+
     <xsl:template match="/">
 <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 <xsl:comment> CEURVERSION=2015-09-23 </xsl:comment>
@@ -159,67 +162,15 @@
                             <li id=""><a href="">Preface</a></li>
                         </ol>
                         -->
-                        <!--
-                        XXX: CEURSESSION / AUXSESSION
-                        Bring this to life once sessions are expected in workshop.xml
-                        A session should have a unique name. This structure might impose some changes on /toc/paper (i.e., if session is present, either /toc/session/paper or /toc/paper/session needs to be used.)
-                        <xsl:for-each select="/toc/session ...">
-                            <xsl:variable name="sessionIRI">
-                                <xsl:text>[this:#</xsl:text>
-                                <xsl:value-of select="replace(normalize-space(sessionname), '\s+', '')"/>
-                                <xsl:text>]</xsl:text>
-                            </xsl:variable>
-                            <xsl:variable name="sessionType">
-                                <xsl:when test="check whether it is a CEURSESSION or AUXSESSION">
-                                    <xsl:value-of select=""/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:value-of select="'CEURSESSION'"/>
-                                </xsl:otherwise>
-                            </xsl:variable>
-                            <section class="{$sessionType}" about="[this:#table-of-contents]" rel="schema:hasPart" resource="{$sessionIRI}">
-                                <h3 about="{$sessionIRI}" property="schema:name"><xsl:value-of select="replace(normalize-space(name), '\s+', '')"/></h3>
-                                <div about="{$sessionIRI}" property="schema:description">
-                        -->
-                                    <ol rel="schema:hasPart">
-                                        <xsl:for-each select="/toc/paper">
-                                            <xsl:variable name="id">
-                                                <xsl:choose>
-                                                    <xsl:when test="@id != ''">
-                                                        <xsl:value-of select="@id"/>
-                                                    </xsl:when>
-                                                    <xsl:otherwise>
-                                                        <xsl:value-of select="concat('paper-', format-number(position(), '00'))"/>
-                                                    </xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:variable>
-                                            <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
 
-                                        <li id="{$id}" about="[this:#{$id}]" typeof="schema:ScholarlyArticle">
-                                            <a class="CEURTITLE" about="[this:#{$id}]" rel="schema:url" property="schema:name" href="{resolve-uri($pdf, $volume-url)}"><xsl:value-of select="title"/></a>
-                                            <xsl:if test="url"><xsl:text> </xsl:text>[<a rel="bibo:uri" href="{url}">canonical URL</a>]</xsl:if>
-                                            <xsl:if test="pages">
-                                            <dl class="pages">
-                                                <dt>Pages</dt>
-                                                <dd class="CEURPAGES"><span about="[this:#{$id}]" property="schema:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>–<span about="[this:#{$id}]" property="schema:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></dd>
-                                            </dl>
-                                            </xsl:if>
-                                            <dl class="authors">
-                                                <dt>Authors</dt>
-                                                <xsl:for-each select="authors/author">
-                                                    <xsl:variable name="authorIRI" select="replace(normalize-space(.), '\s+', '')"/>
-                                                <dd class="CEURAUTHOR" id="{$id}-{$authorIRI}" rel="bibo:authorList" inlist="" resource="[this:#{$id}-{$authorIRI}]"><span about="[this:#{$id}]" rel="schema:author"><span about="[this:#{$id}-{$authorIRI}]" typeof="schema:Person" property="schema:name"><xsl:value-of select="normalize-space(.)"/></span></span></dd>
-                                                </xsl:for-each>
-                                            </dl>
-                                        </li>
-                                        </xsl:for-each>
-                                    </ol>
-                        <!--
-                        XXX: CEURSESSION / AUXSESSION
-                            </div>
-                        </section>
-                        </xsl:for-each>
-                        -->
+                        <!-- <toc> is expected to either contain a sequence of <paper> elements or a sequence of <session> elements.  However we also gracefully handle the occurrence of both, in which case we first output all <paper>s without a session, then the <session>s. -->
+                        <xsl:if test="/toc/paper">
+                            <ol rel="dcterms:hasPart">
+                                <xsl:apply-templates select="/toc/paper"/>
+                            </ol>
+                        </xsl:if>
+
+                        <xsl:apply-templates select="/toc/session"/>
                     </div>
                 </section>
 
@@ -237,5 +188,83 @@
         </footer>
     </body>
 </html>
+    </xsl:template>
+
+    <xsl:template match="session">
+        <xsl:variable name="sessionName">
+            <xsl:number/><xsl:if test="title">
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="title"/>
+            </xsl:if>
+        </xsl:variable>
+
+        <xsl:variable name="sessionIRI">
+            <xsl:text>[this:#</xsl:text>
+            <xsl:value-of select="replace(normalize-space($sessionName), '\s+', '')"/>
+            <xsl:text>]</xsl:text>
+        </xsl:variable>
+
+        <section about="[this:#table-of-contents]" rel="schema:hasPart" resource="{$sessionIRI}">
+            <h3 about="{$sessionIRI}" property="schema:name" class="CEURSESSION">Session <xsl:value-of select="$sessionName"/></h3>
+            <div about="{$sessionIRI}" property="schema:description">
+                <ol rel="dcterms:hasPart">
+                    <xsl:apply-templates select="paper"/>
+                </ol>
+            </div>
+        </section>
+    </xsl:template>
+
+    <xsl:template match="paper">
+        <xsl:variable name="position">
+            <xsl:choose>
+                <xsl:when test="$multi-session">
+                    <xsl:variable name="prev-papers-in-same-session" select="preceding::paper"/>
+                    <xsl:variable name="ancestors" select="ancestor::node()"/>
+                    <!-- $ns1[count(.|$ns2) = count($ns2)] == $ns1 intersect $ns2 -->
+                    <xsl:variable name="prev-papers-in-other-branches" select="
+                    $all-papers-across-sessions
+                    [count(.|$prev-papers-in-same-session) = count($prev-papers-in-same-session)
+                    or
+                    count(.|$ancestors) = count($ancestors)]"/>
+                    <xsl:value-of select="count($prev-papers-in-other-branches) + 1"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="position()"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="id">
+            <xsl:choose>
+                <xsl:when test="@id != ''">
+                    <xsl:value-of select="@id"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!-- determine the number of this <paper> element among all <paper> elements in document order (including those in different <session> branches)-->
+                    <!-- http://stackoverflow.com/a/3562716/2397768 -->
+                    <xsl:value-of select="concat('paper-', format-number($position, '00'))"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
+
+        <li id="{$id}" about="[this:#{$id}]" typeof="schema:ScholarlyArticle" value="{$position}">
+            <a class="CEURTITLE" about="[this:#{$id}]" rel="schema:url" property="schema:name" href="{resolve-uri($pdf, $volume-url)}"><xsl:value-of select="title"/></a>
+            <xsl:if test="url"><xsl:text> </xsl:text>[<a rel="bibo:uri" href="{url}">canonical URL</a>]</xsl:if>
+            <xsl:if test="pages">
+            <dl class="pages">
+                <dt>Pages</dt>
+                <dd class="CEURPAGES"><span about="[this:#{$id}]" property="schema:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>–<span about="[this:#{$id}]" property="schema:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></dd>
+            </dl>
+            </xsl:if>
+            <dl class="authors">
+                <dt>Authors</dt>
+                <xsl:for-each select="authors/author">
+                    <xsl:variable name="authorIRI" select="replace(normalize-space(.), '\s+', '')"/>
+                <dd class="CEURAUTHOR" id="{$id}-{$authorIRI}" rel="bibo:authorList" inlist="" resource="[this:#{$id}-{$authorIRI}]"><span about="[this:#{$id}]" rel="schema:author"><span about="[this:#{$id}-{$authorIRI}]" typeof="schema:Person" property="schema:name"><xsl:value-of select="normalize-space(.)"/></span></span></dd>
+                </xsl:for-each>
+            </dl>
+        </li>
     </xsl:template>
 </xsl:stylesheet>
