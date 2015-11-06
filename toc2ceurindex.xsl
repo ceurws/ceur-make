@@ -70,116 +70,118 @@
             </dl>
         </header>
 
-        <article>
-            <h1><a class="CEURVOLACRONYM" rel="foaf:homepage" href="{ $workshop/homepage }" property="bibo:shortTitle schema:alternateName"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></a><xsl:text> </xsl:text><span class="CEURVOLTITLE" property="schema:name"><xsl:value-of select="$workshop/title/volume"/></span></h1>
+        <main>
+            <article>
+                <h1><a class="CEURVOLACRONYM" rel="foaf:homepage" href="{ $workshop/homepage }" property="bibo:shortTitle schema:alternateName"><xsl:value-of select="$workshop/title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="$year"/></a><xsl:text> </xsl:text><span class="CEURVOLTITLE" property="schema:name"><xsl:value-of select="$workshop/title/volume"/></span></h1>
 
-            <dl id="document-event" about="[this:]" rel="bibo:presentedAt" resource="[this:#event]">
-                <dt typeof="schema:Event">Event</dt>
-                <dd property="schema:description">
-                    <span class="CEURFULLTITLE" property="schema:name"><xsl:value-of select="$workshop/title/full"/></span>
-                    <xsl:choose>
-                        <xsl:when test="$workshop/conference">
-                            <xsl:text> co-located with </xsl:text>
-                            <xsl:if test="$workshop/conference/full"><xsl:value-of select="$workshop/conference/full"/> (</xsl:if>
-                            <span class="CEURCOLOCATED">
-                            <xsl:choose>
-                                <xsl:when test="$workshop/conference/homepage">
-                                    <a rel="schema:isPartOf" href="{ $workshop/conference/homepage }"><xsl:value-of select="$workshop/conference/acronym"/></a>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:value-of select="$workshop/conference/acronym"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                            </span>
-                            <xsl:if test="$workshop/conference/full">)</xsl:if>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:comment> co-located with &lt;span class="CEURCOLOCATED"&gt;NONE&lt;/span&gt; </xsl:comment>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </dd>
-                <dt>Location</dt>
-                <dd class="CEURLOCATION" rel="schema:location" resource="[dbr:{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', '') }]"><xsl:value-of select="$workshop/location"/></dd>
-                <dt>Date</dt>
-                <dd class="CEURTIME">
-                    <xsl:choose>
-                        <xsl:when test="$workshop/date/from and $workshop/date/to">
-                            <!--
-                            Possible output formats:
-                            different years: (December 31st, 2013) to (January 1st, 2014)
-                            same year, different months: (November 30th) to (December 1st, 2013)
-                            same year, same month: (December 30th) to (31st, 2013)
-                            -->
-                            <xsl:variable name="same-year" select="year-from-date($workshop/date/from) eq year-from-date($workshop/date/to)"/>
-                            <xsl:variable name="same-year-and-month" select="$same-year and month-from-date($workshop/date/from) eq month-from-date($workshop/date/to)"/>
-                            <time property="schema:startDate" content="{ $workshop/date/from }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></time>
-                            <xsl:text> to </xsl:text>
-                            <time property="schema:endDate" content="{ $workshop/date/to }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <time property="schema:startDate schema:endDate" content="{ $workshop/date }" datatype="xsd:date" datetime="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </dd>
-            </dl>
-
-            <div id="authors">
-                <dl id="author-name">
-                    <dt>Editors</dt>
-                    <xsl:for-each select="$workshop/editors/editor">
-                        <xsl:variable name="editorIRI">
-                            <xsl:text>[this:#</xsl:text>
-                            <xsl:value-of select="replace(normalize-space(name), '\s+', '')"/>
-                            <xsl:text>]</xsl:text>
-                        </xsl:variable>
-                        <dd id="author-{position()}" rel="bibo:editor" resource="{$editorIRI}"><span about="[this:]" rel="schema:contributor schema:author schema:editor{if (@submitting='true') then ' schema:creator' else ''}">
+                <dl id="document-event" about="[this:]" rel="bibo:presentedAt" resource="[this:#event]">
+                    <dt typeof="schema:Event">Event</dt>
+                    <dd property="schema:description">
+                        <span class="CEURFULLTITLE" property="schema:name"><xsl:value-of select="$workshop/title/full"/></span>
                         <xsl:choose>
-                            <xsl:when test="homepage">
-                                <a class="CEURVOLEDITOR" about="{$editorIRI}" typeof="schema:Person" rel="schema:url" property="schema:name" href="{homepage}"><xsl:value-of select="name"/></a>
+                            <xsl:when test="$workshop/conference">
+                                <xsl:text> co-located with </xsl:text>
+                                <xsl:if test="$workshop/conference/full"><xsl:value-of select="$workshop/conference/full"/> (</xsl:if>
+                                <span class="CEURCOLOCATED">
+                                <xsl:choose>
+                                    <xsl:when test="$workshop/conference/homepage">
+                                        <a rel="schema:isPartOf" href="{ $workshop/conference/homepage }"><xsl:value-of select="$workshop/conference/acronym"/></a>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:value-of select="$workshop/conference/acronym"/>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                                </span>
+                                <xsl:if test="$workshop/conference/full">)</xsl:if>
                             </xsl:when>
                             <xsl:otherwise>
-                                <span class="CEURVOLEDITOR"><xsl:value-of select="name"/></span>
+                                <xsl:comment> co-located with &lt;span class="CEURCOLOCATED"&gt;NONE&lt;/span&gt; </xsl:comment>
                             </xsl:otherwise>
                         </xsl:choose>
-                        </span><sup><a about="{$editorIRI}" rel="schema:memberOf" resource="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" href="#author-org-{position()}"><xsl:value-of select="position()"/></a></sup></dd>
-                    </xsl:for-each>
+                    </dd>
+                    <dt>Location</dt>
+                    <dd class="CEURLOCATION" rel="schema:location" resource="[dbr:{ replace($workshop/location/@href, 'https?://en\.wikipedia\.org/wiki/', '') }]"><xsl:value-of select="$workshop/location"/></dd>
+                    <dt>Date</dt>
+                    <dd class="CEURTIME">
+                        <xsl:choose>
+                            <xsl:when test="$workshop/date/from and $workshop/date/to">
+                                <!--
+                                Possible output formats:
+                                different years: (December 31st, 2013) to (January 1st, 2014)
+                                same year, different months: (November 30th) to (December 1st, 2013)
+                                same year, same month: (December 30th) to (31st, 2013)
+                                -->
+                                <xsl:variable name="same-year" select="year-from-date($workshop/date/from) eq year-from-date($workshop/date/to)"/>
+                                <xsl:variable name="same-year-and-month" select="$same-year and month-from-date($workshop/date/from) eq month-from-date($workshop/date/to)"/>
+                                <time property="schema:startDate" content="{ $workshop/date/from }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></time>
+                                <xsl:text> to </xsl:text>
+                                <time property="schema:endDate" content="{ $workshop/date/to }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <time property="schema:startDate schema:endDate" content="{ $workshop/date }" datatype="xsd:date" datetime="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </dd>
                 </dl>
 
-                <ul id="author-org">
-                    <xsl:for-each select="$workshop/editors/editor">
-                        <li id="author-org-{position()}"><sup><xsl:value-of select="position()"/></sup><a about="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" typeof="schema:Organization" property="schema:name" rel="schema:url" href=""><xsl:value-of select="affiliation"/></a>, <xsl:value-of select="country"/></li>
-                    </xsl:for-each>
-                </ul>
-            </div>
+                <div id="authors">
+                    <dl id="author-name">
+                        <dt>Editors</dt>
+                        <xsl:for-each select="$workshop/editors/editor">
+                            <xsl:variable name="editorIRI">
+                                <xsl:text>[this:#</xsl:text>
+                                <xsl:value-of select="replace(normalize-space(name), '\s+', '')"/>
+                                <xsl:text>]</xsl:text>
+                            </xsl:variable>
+                            <dd id="author-{position()}" rel="bibo:editor" resource="{$editorIRI}"><span about="[this:]" rel="schema:contributor schema:author schema:editor{if (@submitting='true') then ' schema:creator' else ''}">
+                            <xsl:choose>
+                                <xsl:when test="homepage">
+                                    <a class="CEURVOLEDITOR" about="{$editorIRI}" typeof="schema:Person" rel="schema:url" property="schema:name" href="{homepage}"><xsl:value-of select="name"/></a>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <span class="CEURVOLEDITOR"><xsl:value-of select="name"/></span>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                            </span><sup><a about="{$editorIRI}" rel="schema:memberOf" resource="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" href="#author-org-{position()}"><xsl:value-of select="position()"/></a></sup></dd>
+                        </xsl:for-each>
+                    </dl>
 
-            <div id="content">
-                <section class="CEURTOC" id="table-of-contents" about="[this:]" rel="schema:hasPart" resource="[this:#table-of-contents]">
-                    <h2 about="[this:#table-of-contents]" property="schema:name">Table of Contents</h2>
-                    <div about="[this:#table-of-contents]" property="schema:description">
-                        <!--
-                        XXX: Preface
-                        <ol rel="schema:hasPart">
-                            <li id=""><a href="">Preface</a></li>
-                        </ol>
-                        -->
+                    <ul id="author-org">
+                        <xsl:for-each select="$workshop/editors/editor">
+                            <li id="author-org-{position()}"><sup><xsl:value-of select="position()"/></sup><a about="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" typeof="schema:Organization" property="schema:name" rel="schema:url" href=""><xsl:value-of select="affiliation"/></a>, <xsl:value-of select="country"/></li>
+                        </xsl:for-each>
+                    </ul>
+                </div>
 
-                        <!-- <toc> is expected to either contain a sequence of <paper> elements or a sequence of <session> elements.  However we also gracefully handle the occurrence of both, in which case we first output all <paper>s without a session, then the <session>s. -->
-                        <xsl:if test="/toc/paper">
-                            <ol rel="dcterms:hasPart">
-                                <xsl:apply-templates select="/toc/paper"/>
+                <div id="content">
+                    <section class="CEURTOC" id="table-of-contents" about="[this:]" rel="schema:hasPart" resource="[this:#table-of-contents]">
+                        <h2 about="[this:#table-of-contents]" property="schema:name">Table of Contents</h2>
+                        <div about="[this:#table-of-contents]" property="schema:description">
+                            <!--
+                            XXX: Preface
+                            <ol rel="schema:hasPart">
+                                <li id=""><a href="">Preface</a></li>
                             </ol>
-                        </xsl:if>
+                            -->
 
-                        <xsl:apply-templates select="/toc/session"/>
-                    </div>
-                </section>
+                            <!-- <toc> is expected to either contain a sequence of <paper> elements or a sequence of <session> elements.  However we also gracefully handle the occurrence of both, in which case we first output all <paper>s without a session, then the <session>s. -->
+                            <xsl:if test="/toc/paper">
+                                <ol rel="dcterms:hasPart">
+                                    <xsl:apply-templates select="/toc/paper"/>
+                                </ol>
+                            </xsl:if>
 
-                <xsl:if test="$all-in-one">
-                <p>The whole proceedings can also be downloaded as a single file (<a rel="rdfs:seeAlso" href="{concat($id, '-complete.pdf')}">PDF</a>, including title pages, preface, and table of contents).</p>
-                </xsl:if>
-                <p>We offer a <a href="{$id}.bib">BibTeX file</a> for citing papers of this workshop from LaTeX.</p>
-            </div>
-        </article>
+                            <xsl:apply-templates select="/toc/session"/>
+                        </div>
+                    </section>
+
+                    <xsl:if test="$all-in-one">
+                    <p>The whole proceedings can also be downloaded as a single file (<a rel="rdfs:seeAlso" href="{concat($id, '-complete.pdf')}">PDF</a>, including title pages, preface, and table of contents).</p>
+                    </xsl:if>
+                    <p>We offer a <a href="{$id}.bib">BibTeX file</a> for citing papers of this workshop from LaTeX.</p>
+                </div>
+            </article>
+        </main>
 
         <footer>
             <xsl:variable name="dateCreated" select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>
