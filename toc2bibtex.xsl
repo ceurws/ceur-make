@@ -123,7 +123,7 @@
           <xsl:with-param name="content">It is strongly recommended to use BibLaTeX for these entries</xsl:with-param>
       </xsl:call-template>
 
-      <xsl:apply-templates select="paper"/>
+      <xsl:apply-templates select="descendant::paper"/>
 
       <xsl:variable name="title" select="concat($workshop/title/full, ' (', $workshop/title/acronym, ')')"/>
       <xsl:call-template name="entry">
