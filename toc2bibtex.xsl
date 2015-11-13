@@ -55,14 +55,14 @@
       <xsl:text>,&#xa;</xsl:text>
   </xsl:template>
 
-  <xsl:function name="ex:surname">
+  <xsl:function name="ex:familyName">
       <xsl:param name="author"/>
       <xsl:value-of select="tokenize($author, ' ')[last()]"/>
   </xsl:function>
 
   <xsl:function name="ex:id-from-authors">
       <xsl:param name="authors"/>
-      <xsl:value-of select="concat(ex:surname($authors/author[1]), if (count($authors/author) eq 2) then ex:surname($authors/author[2]) else if (count($authors/author) gt 2) then 'EtAl' else '')"/>
+      <xsl:value-of select="concat(ex:familyName($authors/author[1]), if (count($authors/author) eq 2) then ex:familyName($authors/author[2]) else if (count($authors/author) gt 2) then 'EtAl' else '')"/>
   </xsl:function>
 
   <xsl:template match="paper">
