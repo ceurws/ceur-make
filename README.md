@@ -86,7 +86,7 @@ From these files, you can generate the following building blocks of a CEUR-WS.or
 * [the copyright form] [4] (via `make`, or specifically `make copyright-form.txt`)
 * a LaTeX table of contents to help with generating an all-in-one PDF version of the proceedings (via `make`, or specifically `make toc.tex`).  The all-in-one PDF is assumed to have the name `proc.pdf`.
 * a BibTeX database (via `make`, or specifically `make ceur-ws/temp.bib`).  This file will need manual post-processing; please read on below.
-* a ZIP archive for upload to CEUR-WS.org (via `make zip`)
+* a ZIP archive for [upload to CEUR-WS.org](http://ceur-ws.org/HOWTOSUBMIT.html#PUT) (via `make zip`)
 
 #### Manually adapting index.html ####
 
