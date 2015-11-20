@@ -18,8 +18,8 @@
 
   <xsl:variable name="workshop" select="document('workshop.xml')/workshop"/>
   <xsl:variable name="year" select="year-from-date(xs:date(if ($workshop/date/from) then $workshop/date/from else $workshop/date))"/>
-  <xsl:variable name="workshop-id" select="concat($workshop/title/acronym, $year)"/>
-  <xsl:variable name="workshop-url" select="concat('http://ceur-ws.org/Vol-', $workshop/number, '/')"/>
+  <xsl:variable name="volume-id" select="concat($workshop/title/acronym, $year)"/>
+  <xsl:variable name="volume-url" select="concat('http://ceur-ws.org/Vol-', $workshop/number, '/')"/>
 
   <xsl:template name="entry">
       <xsl:param name="type"/>
@@ -55,31 +55,31 @@
       <xsl:text>,&#xa;</xsl:text>
   </xsl:template>
 
-  <xsl:function name="ex:surname">
+  <xsl:function name="ex:familyName">
       <xsl:param name="author"/>
       <xsl:value-of select="tokenize($author, ' ')[last()]"/>
   </xsl:function>
 
   <xsl:function name="ex:id-from-authors">
       <xsl:param name="authors"/>
-      <xsl:value-of select="concat(ex:surname($authors/author[1]), if (count($authors/author) eq 2) then ex:surname($authors/author[2]) else if (count($authors/author) gt 2) then 'EtAl' else '')"/>
+      <xsl:value-of select="concat(ex:familyName($authors/author[1]), if (count($authors/author) eq 2) then ex:familyName($authors/author[2]) else if (count($authors/author) gt 2) then 'EtAl' else '')"/>
   </xsl:function>
 
   <xsl:template match="paper">
       <xsl:variable name="paperurl">
 	  <xsl:choose>
 	      <xsl:when test="@id != ''">
-		  <xsl:value-of select="concat($workshop-url, '#', @id)"/>
+		  <xsl:value-of select="concat($volume-url, '#', @id)"/>
 	      </xsl:when>
 	      <xsl:otherwise>
-		  <xsl:value-of select="concat($workshop-url, '#paper-', format-number(position(), '00'))"/>
+		  <xsl:value-of select="concat($volume-url, '#paper-', format-number(position(), '00'))"/>
 	      </xsl:otherwise>
 	  </xsl:choose>
       </xsl:variable>
       
       <xsl:call-template name="entry">
           <xsl:with-param name="type">inproceedings</xsl:with-param>
-          <xsl:with-param name="id" select="concat(ex:id-from-authors(authors), ':', $workshop-id)"/>
+          <xsl:with-param name="id" select="concat(ex:id-from-authors(authors), ':', $volume-id)"/>
           <xsl:with-param name="content">
               <xsl:call-template name="field">
                   <xsl:with-param name="name">title</xsl:with-param>
@@ -101,7 +101,7 @@
               </xsl:call-template>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">crossref</xsl:with-param>
-                  <xsl:with-param name="content" select="$workshop-id"/>
+                  <xsl:with-param name="content" select="$volume-id"/>
               </xsl:call-template>
           </xsl:with-param>
       </xsl:call-template>
@@ -123,12 +123,12 @@
           <xsl:with-param name="content">It is strongly recommended to use BibLaTeX for these entries</xsl:with-param>
       </xsl:call-template>
 
-      <xsl:apply-templates select="paper"/>
+      <xsl:apply-templates select="descendant::paper"/>
 
       <xsl:variable name="title" select="concat($workshop/title/full, ' (', $workshop/title/acronym, ')')"/>
       <xsl:call-template name="entry">
           <xsl:with-param name="type">proceedings</xsl:with-param>
-          <xsl:with-param name="id" select="$workshop-id"/>
+          <xsl:with-param name="id" select="$volume-id"/>
           <xsl:with-param name="content">
               <xsl:call-template name="field">
                   <xsl:with-param name="name">booktitle</xsl:with-param>
@@ -166,7 +166,7 @@
               </xsl:call-template>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">url</xsl:with-param>
-                  <xsl:with-param name="content" select="$workshop-url"/>
+                  <xsl:with-param name="content" select="$volume-url"/>
               </xsl:call-template>
               <xsl:call-template name="field">
                   <xsl:with-param name="name">venue</xsl:with-param>
