@@ -130,7 +130,7 @@
                         <xsl:for-each select="$workshop/editors/editor">
                             <xsl:variable name="editorIRI">
                                 <xsl:text>[this:#</xsl:text>
-                                <xsl:value-of select="replace(normalize-space(name), '\s+', '')"/>
+                                <xsl:value-of select="replace(normalize-space(name), '\s+', '-')"/>
                                 <xsl:text>]</xsl:text>
                             </xsl:variable>
                             <dd id="author-{position()}" rel="bibo:editor" resource="{$editorIRI}"><span about="[this:]" rel="schema:contributor schema:author schema:editor{if (@submitting='true') then ' schema:creator' else ''}">
@@ -142,7 +142,7 @@
                                     <span class="CEURVOLEDITOR"><xsl:value-of select="name"/></span>
                                 </xsl:otherwise>
                             </xsl:choose>
-                            </span><sup><a about="{$editorIRI}" rel="schema:memberOf" resource="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" href="#author-org-{position()}"><xsl:value-of select="position()"/></a></sup></dd>
+                            </span><sup><a about="{$editorIRI}" rel="schema:memberOf" resource="[this:#{replace(normalize-space(affiliation), '\s+', '-')}]" href="#author-org-{position()}"><xsl:value-of select="position()"/></a></sup></dd>
                         </xsl:for-each>
                     </dl>
 
@@ -151,10 +151,10 @@
                             <li id="author-org-{position()}"><sup><xsl:value-of select="position()"/></sup>
                             <xsl:choose>
                                 <xsl:when test="affiliationHomepage">
-                                    <a about="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" typeof="schema:Organization" property="schema:name" rel="schema:url" href="{replace(normalize-space(affiliationHomepage), '\s+', '')}"><xsl:value-of select="affiliation"/></a>
+                                    <a about="[this:#{replace(normalize-space(affiliation), '\s+', '-')}]" typeof="schema:Organization" property="schema:name" rel="schema:url" href="{replace(normalize-space(affiliationHomepage), '\s+', '')}"><xsl:value-of select="affiliation"/></a>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <span about="[this:#{replace(normalize-space(affiliation), '\s+', '')}]" typeof="schema:Organization" property="schema:name"><xsl:value-of select="affiliation"/></span>
+                                    <span about="[this:#{replace(normalize-space(affiliation), '\s+', '-')}]" typeof="schema:Organization" property="schema:name"><xsl:value-of select="affiliation"/></span>
                                 </xsl:otherwise>
                             </xsl:choose>, <xsl:value-of select="country"/></li>
                         </xsl:for-each>
@@ -210,7 +210,7 @@
 
         <xsl:variable name="sessionIRI">
             <xsl:text>[this:#</xsl:text>
-            <xsl:value-of select="replace(normalize-space($sessionName), '\s+', '')"/>
+            <xsl:value-of select="replace(normalize-space($sessionName), '\s+', '-')"/>
             <xsl:text>]</xsl:text>
         </xsl:variable>
 
@@ -271,7 +271,7 @@
             <dl class="authors">
                 <dt>Authors</dt>
                 <xsl:for-each select="authors/author">
-                    <xsl:variable name="authorIRI" select="replace(normalize-space(.), '\s+', '')"/>
+                    <xsl:variable name="authorIRI" select="replace(normalize-space(.), '\s+', '-')"/>
                 <dd class="CEURAUTHOR" id="{$id}-{$authorIRI}" rel="bibo:authorList" inlist="" resource="[this:#{$id}-{$authorIRI}]"><span about="[this:#{$id}]" rel="schema:author"><span about="[this:#{$id}-{$authorIRI}]" typeof="schema:Person" property="schema:name"><xsl:value-of select="normalize-space(.)"/></span></span></dd>
                 </xsl:for-each>
             </dl>
