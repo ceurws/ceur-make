@@ -34,7 +34,7 @@
 
     <xsl:template match="/">
 <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-<xsl:comment> CEURVERSION=2015-09-23 </xsl:comment>
+<xsl:comment> CEURVERSION=2015-12-02</xsl:comment>
 <xsl:text>
 </xsl:text>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
