@@ -222,11 +222,10 @@
     </xsl:variable>
     <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
     <li id="{ $id }" typeof="bibo:Article" about="#{ $id }"><span rel="dcterms:relation"><a typeof="bibo:Document" href="{ $pdf }"><span property="dcterms:format" content="application/pdf"/><span property="bibo:uri" content="{ resolve-uri($pdf, $volume-url) }"/><span about="#{ $id }" property="dcterms:title" class="CEURTITLE"><xsl:value-of select="title"/></span></a></span><xsl:if test="pages"> <span class="CEURPAGES"><span property="bibo:pageStart" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@from"/></span>-<span property="bibo:pageEnd" datatype="xsd:nonNegativeInteger"><xsl:value-of select="pages/@to"/></span></span> </xsl:if><br/>&#xa;
-    <span class="CEURAUTHORS">
-      <xsl:for-each select="authors/author">
-        <span rel="dcterms:creator"><span property="foaf:name"><xsl:value-of select="."/></span></span>
+    <xsl:for-each select="authors/author">
+        <span rel="dcterms:creator"><span property="foaf:name" class="CEURAUTHOR"><xsl:value-of select="."/></span></span>
         <xsl:if test="position() ne last()">, </xsl:if>
-        </xsl:for-each></span><br/></li>&#xa;
+        </xsl:for-each><br/></li>&#xa;
   </xsl:template>
 </xsl:stylesheet>
 
