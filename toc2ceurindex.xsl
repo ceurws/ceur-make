@@ -113,12 +113,12 @@
                                 -->
                                 <xsl:variable name="same-year" select="year-from-date($workshop/date/from) eq year-from-date($workshop/date/to)"/>
                                 <xsl:variable name="same-year-and-month" select="$same-year and month-from-date($workshop/date/from) eq month-from-date($workshop/date/to)"/>
-                                <time property="schema:startDate" datetime="{ $workshop/date/from }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></time>
+                                <time property="schema:startDate" content="{ $workshop/date/from }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></time>
                                 <xsl:text> to </xsl:text>
-                                <time property="schema:endDate" datetime="{ $workshop/date/to }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
+                                <time property="schema:endDate" content="{ $workshop/date/to }" datatype="xsd:dateTime"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
                             </xsl:when>
                             <xsl:otherwise>
-                                <time property="schema:startDate schema:endDate" datatype="xsd:date" datetime="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
+                                <time property="schema:startDate schema:endDate" content="{ $workshop/date }" datatype="xsd:date" datetime="{ $workshop/date }"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
                             </xsl:otherwise>
                         </xsl:choose>
                     </dd>
