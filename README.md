@@ -33,11 +33,12 @@ Prerequisites
 * [GNU make](http://www.gnu.org/software/make/) (any recent version should be sufficient)
 * [GNU bash](http://www.gnu.org/software/bash/) (any recent version should be sufficient)
 * [Saxon-HE 9](http://saxon.sourceforge.net) (other XSLT 2 processors might work as well, but the Makefile currently assumes Saxon, and ceur-make has been tested with Saxon-HE 9.5)
+  * Java Runtime Environment (JRE, for Saxon)
 * Optional:
   * [Perl 5](http://www.perl.org/) (for processing EasyChair proceedings; any recent version should be sufficient)
   * TeX (for generating an all-in-one proceedings file; any recent version should be sufficient; tested with [TeX Live 2012](http://www.tug.org/texlive/))
   
-On a recent Linux all of these components (except maybe Saxon) should be installable via the central package manager.  On Mac OS, most components should be installable via [MacPorts](http://www.macports.org/) or [Fink](http://fink.thetis.ig42.org/), on Windows via [Cygwin](http://cygwin.com/).
+On a recent Linux all of these components (except maybe Saxon) should be installable via the central package manager, if they are not yet installed anyway.  On Mac OS, most components should be installable via [MacPorts](http://www.macports.org/) or [Fink](http://fink.thetis.ig42.org/), on Windows via [Cygwin](http://cygwin.com/).  For Saxon, it suffices to download its distribution for Java, and to unzip the `saxon9he.jar` file from the ZIP file, and to put it into some user directory.
 
 ceur-make has so far been tested on Linux and Windows (using Cygwin); [reports] [5] from users of other systems are welcome.
 
@@ -46,7 +47,7 @@ How to use
 
 ### Getting started ###
 
-To get started, you need to copy the ceur-make scripts into the directory in which you would like to keep your proceedings.  You can do this by calling `./ceur-make-init path/to/your/directory` from the directory where you installed ceur-make.  Copy `Makefile.vars.template` to `Makefile.vars` and adapt the paths to point to your local installations of Saxon, etc.  (`ceur-make-init` doesn't do this automatically to prevent problems.)
+To get started, you need to copy the ceur-make scripts into the directory in which you would like to keep your proceedings.  You can do this by calling `./ceur-make-init path/to/your/directory` from the directory where you installed ceur-make.  Copy `Makefile.vars.template` to `Makefile.vars` and adapt the paths to point to the path of where you put Saxon, etc.  (`ceur-make-init` doesn't do this automatically to prevent problems.)
 
 ### Export from EasyChair (optional) ###
 
