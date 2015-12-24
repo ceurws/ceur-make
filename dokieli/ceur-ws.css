@@ -178,12 +178,11 @@ dl {
     -webkit-margin-after:0;
 }
 
-.CEURFULLTITLE,
-.CEURCOLOCATEDDESCRIPTION,
-.CEURCOLOCATED,
-.CEURLOCATION,
-.CEURTIME,
-.CEURVOLEDITOR {
+#document-event .CEURFULLTITLE,
+#document-event .CEURCOLOCATEDDESCRIPTION,
+#document-event .CEURLOCATION,
+#document-event .CEURTIME,
+#author-name .CEURVOLEDITOR {
     font-weight:bold;
     font-size:1.175em;
 }
