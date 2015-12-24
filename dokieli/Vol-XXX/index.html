@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- CEURVERSION=2015-12-21 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CEUR-WS.org/Vol-XXX - Workshop on Publishing Papers with CEUR-WS YYYY</title>
+        <link rel="stylesheet" media="all" title="CEUR-WS" href="../ceur-ws.css" />
+    </head>
+    <body>
+<pre class="CEURGUIDE"># Editing instructions
+# The following variables need to be adapted by you:
+# JJJJ=Year in which the final papers of the proceedings were produced
+# YYYY=Year in which the workshop took place (in most cases YYYY=JJJJ)
+# NNNN=Acronym of the Workshop
+# DD=Day of submission of the workshop proceedings to CEUR-WS.org
+# MM=Month of submission of the workshop proceedings (MM=01,02,03,04,05,06,07,08,09,10,11,12)
+# The variable
+# XXX=Volume number of the proceedings with CEUR-WS.org
+# shall be adapted by CEUR-WS.org. CEUR-WS.org shall also set the publication date.
+#
+#
+# (*) Replace title of the workshop in the title element
+# (*) Replace title of the workshop in the heading h1 element
+# (*) Note that the style file ceur-ws.css and the image CEUR-WS-logo.png are referring to files within
+#     the CEUR-WS.org web site; they are not part of the submission directory
+# (*) Remove lines starting with #  or &lt;pre&gt;# when preparing the file index.html
+#
+# Some elements are tagged with a "class=CEUR..." clause. Be careful to maintain these tags!
+# They are used both for formatting purposes and for identifying bibliographic elements.
+# The CEUR class tags are as follows:
+#          CEURLANG: the main language of the proceedings (eng, deu, fra, spa, rus, ita, por, ...)
+#                 according to ISO 639-2/T (http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes)
+#          CEURVOLNR: the volume number of the proceedings **set by us**
+#          CEURPUBYEAR: the year in which the proceedings volume was created (see also YYYY)
+#          CEURURN: the URN of the volume **set by us**
+#          CEURVOLACRONYM: the acronym of the workshop plus YYYY (year of the workshop)
+#                 the acronym may contain '-'; between acronym and year is either a blank
+#                 or a '-'. The year is exactly 4 digits, e.g. 2012
+#          CEURVOLTITLE: the title of the proceedings
+#          CEURFULLTITLE: the long title of the proceedings
+#          CEURCOLOCATED: the acronym and year of the conference where this workshop was
+#              co-located with; use "NONE" if the workshop was not co-located with a conference
+#          CEURLOCTIME: the place and time when the workshop took place
+#          CEURVOLEDITOR: full name of an editor of the proceedings
+#          CEURTOC: indicator for the start of the table of contents
+#          CEURSESSION (optional): separator for a section within the table of contents
+#          CEURTITLE: title of a paper within the table of contents
+#          CEURPAGES (optional): numerical range of pages of a paper, e.g. 10-20
+#          CEURAUTHOR: one author of a paper (use full names, do not include affiliations);
+#                 multiple authors should be separated by commas
+#          CEURPUBDATE: the precise date of publication at CEUR-WS.org **set by us**
+#
+#          AUXTITLE,AUXPAGES,AUXAUTHOR: like their CEUR-counterparts but not to be indexed by DBLP
+#          AUXSESSION: like CEURSESSION but will be ignored for indexing; use for sessions where all
+#                   papers are described by AUX tags
+#</pre>
+        <header>
+            <address><a href="/"><img alt="CEUR-WS" src="http://ceur-ws.org/CEUR-WS-logo.png" width="390" height="100" /></a></address>
+            <dl id="document-identifier">
+                <dd class="CEURVOLNR">Vol-XXX</dd>
+                <dd class="CEURURN">urn:nbn:de:0074-XXX-C</dd>
+            </dl>
+<!-- XXX: If CEURLANG is not used by anything e.g., DBLP, remove this completely. -->
+            <span id="document-language" class="CEURLANG">eng</span>
+
+            <p id="document-license">Copyright © <span class="CEURPUBYEAR">JJJJ</span> for the individual papers by the papers' authors. Copying permitted for private and academic purposes. This volume is published and copyrighted by its editors.</p>
+        </header>
+
+        <main>
+<pre class="CEURGUIDE"># Instructions for the Proceedings Title
+# The layout of the proceedings title can be adapted to your needs.
+# Make sure to include all proceedings editors and their affiliations.
+# Links to home pages are fine but not required. Some workshops have
+# a special logo. This could be included here provided that you own the
+# copyright to the logo. Do NOT include logos of companies, products,
+# or sponsors.
+#</pre>
+            <h1><a class="CEURVOLACRONYM" href="http://www.workshop-website.org/loc">NNNN YYYY</a> <span class="CEURVOLTITLE">Publishing Papers with CEUR-WS</span></h1>
+
+            <div id="document-event">
+                <span class="CEURFULLTITLE">Proceedings of the Workshop on Publishing Papers with CEUR-WS</span>
+<pre class="CEURGUIDE"># delete one of the following two CEURCOLOCATED lines:</pre>
+                <!-- co-located with <span class="CEURCOLOCATED">NONE</span> -->
+                <span class="CEURCOLOCATEDDESCRIPTION">co-located with 10th International Conference on Online Publishing (<span class="CEURCOLOCATED"><!--<a href="http://yyyy.example.org/">-->OPub YYYY<!--</a>--></span>)</span>
+                </span><br/>
+                <span class="CEURLOCATION">City, Country</span>,
+                <time class="CEURTIME" datetime="2015-10-11">Month Day, YYYY</time>.
+            </div>
+
+            <div id="authors">
+                <dl id="author-name">
+                    <dt>Edited by</dt>
+<pre class="CEURGUIDE"># use full names, but omit any academic title</pre>
+                    <dd class="CEURVOLEDITOR"><a href="http://www.personal-webpage.org/myhome/"><span>Mary Editor</span></a> *</dd>
+                    <dd class="CEURVOLEDITOR"><span>Peter Coeditor</span> **</dd>
+                </dl>
+
+                <ul id="author-org">
+                    <li>* <a class="CEURVOLEDITORORG" href="http://www.univ-of-science.org/">University of Science</a>, <span class="CEURVOLEDITORORGDEPT">Faculty of Research</span>, <span class="CEURVOLEDITORORGSTREET">9999 Novocity</span>, <span class="CEURVOLEDITORORGCOUNTRY">Country</span></li>
+                    <li>** <a class="CEURVOLEDITORORG" href="http://www.acme-company.com/research/">ACME Inc.</a>, <span class="CEURVOLEDITORORGDEPT">Research Laboratory</span>, <span class="CEURVOLEDITORORGSTREET">8888 Technotown</span>, <span class="CEURVOLEDITORORGCOUNTRY">Othercountry</span></li>
+                </ul>
+            </div>
+
+<!-- XXX: CEURDESCRIPTION is used to describe the event -->
+            <div class="CEURDESCRIPTION">
+                <p>CONF/WORKSHOP allows authors to submit their paper either in English or in Russian.</p>
+            </div>
+
+            <div id="content">
+<pre class="CEURGUIDE"># Instructions for Table of Contents
+# The table of contents normally is a plain list of papers (with titles/authors).
+# The paper title should be linked to the paper URL (usually pdf).
+# You may include "session" subsections e.g. to reflect the track structure of your workshop.
+# Authors should be specified as comma-separated lists with full author names
+# (like John Smith). Avoid glue words like 'by' and 'and'. If applicable, then lookup how
+# the author is spelled out by DBLP.
+# You may also provide additional material such as preface, bibtex files, complete
+# proceedings as a single pdf, and similar items. The additional items should be
+# clearly separated from the paper list, preferably after the table of contents.
+# Please only tag original papers with the CEURTITLE/CEURAUTHOR scheme. Rather do not tag
+# additional material with this scheme!
+# For the time being, presentation slides should also not be tagged by CEURTITLE/CEURAUTHOR.
+#</pre>
+                <h2>Table of Contents</h2>
+<pre class="CEURGUIDE"># Prefaces, frontmatter etc. typically have no explicit authors.
+# Note that the &lt;li id="..."&gt; attribute should have the same value as
+# the name of the file linked to, just without the filename extension.
+# This allows the table of contents entries to be linked to.
+# </pre>
+                <div class="CEURTOC">
+                    <ul>
+                        <li id="preface"><a href="preface.pdf">Preface</a></li>
+                    </ul>
+
+<pre class="CEURGUIDE"># The session element is optional. It structures the table of contents.
+# Each CEURSESSION must be followed by at least one paper using the li clause
+# You can also use h3 subtitles without the CEURSESSION tag. Then, no
+# restriction is imposed.
+#</pre>
+                    <section>
+                        <h3 class="CEURSESSION">Session 1: Introduction</h3>
+<pre class="CEURGUIDE"># intro1.pdf below is an example of an invited paper.
+# paper links must follow directly the li element. Note that special characters like accents must be specified in their HTML command form!
+
+# intro2.pdf is an example of a multi-page paper with page numbers</pre>
+                        <ul>
+                            <li id="intro1">
+                                <a class="CEURTITLE" href="intro1.pdf">Preparing the Submission File</a> (invited paper)
+                                <span class="CEURPAGES">1</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Ken Bar</span>
+                                <span class="CEURAUTHOR">Anne Foé</span>
+                            </li>
+                            <li id="intro2">
+                                <a class="CEURTITLE" href="intro2.pdf">Filling a Put-Fax Form</a>
+                                <span class="CEURPAGES">3-14</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Mary Doe</span>
+                                <span class="CEURAUTHOR">Müstermann</span>
+                            </li>
+                            <li id="intro3">
+                                <a class="CEURTITLE" href="intro3.pdf">Dealing with Page Numbers and Rather Long Titles That Could Span Multiple Lines to Check Whether All is Displayed Correctly</a>
+                                <span class="CEURPAGES">15-22</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Carlos Nombre</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 class="CEURSESSION">Session 2: Sample Styles</h3>
+<pre class="CEURGUIDE"># The sources for the <a href="samplestyles/">sample styles</a> are available as well.</pre>
+                        <ul>
+                            <li id="paper1">
+                                <a class="CEURTITLE" href="paper1.pdf">The One Column Style for CEUR-WS</a>
+                                <span class="CEURPAGES">23-25</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Mary Y. Writter</span>
+                                <span class="CEURAUTHOR">John X. Ceur</span>
+                                <span class="CEURAUTHOR">Yvonne Onderzoeker</span>
+                            </li>
+                            <li id="paper1p">
+                                <a class="CEURTITLE" href="paper1p.pdf">The One Column With Page Numbers Style for CEUR-WS</a>
+                                <span class="CEURPAGES">23-25</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Mary Y. Writter</span>
+                                <span class="CEURAUTHOR">John X. Ceur</span>
+                                <span class="CEURAUTHOR">Yvonne Onderzoeker</span>
+                            </li>
+                            <li id="paper2">
+                                <a class="CEURTITLE" href="paper2.pdf">The Two Column Style for CEUR-WS</a>
+                                <span class="CEURPAGES">26-28</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Mary Y. Writter</span>
+                                <span class="CEURAUTHOR">John X. Ceur</span>
+                                <span class="CEURAUTHOR">Yvonne Onderzoeker</span>
+                            </li>
+                            <li id="paper2p">
+                                <a class="CEURTITLE" href="paper2p.pdf">The Two Column Style With Page Numbers for CEUR-WS</a>
+                                <span class="CEURPAGES">31-32</span>
+                                <br/>
+                                <span class="CEURAUTHOR">Mary Y. Writter</span>
+                                <span class="CEURAUTHOR">John X. Ceur</span>
+                                <span class="CEURAUTHOR">Yvonne Onderzoeker</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 class="CEURSESSION">Session 3: Another Session</h3>
+<pre># The following are examples of papers without page numbers</pre>
+                        <ul>
+                            <li id="paper4">
+                                <a class="CEURTITLE" href="paper4.pdf">In Medias Res</a>
+                                <br/>
+                                <span class="CEURAUTHOR">Anne Foé</span>
+                            </li>
+                            <li id="paper5">
+                                <a class="CEURTITLE" href="paper5.pdf">Using Tags in HTML</a>
+                                <br/>
+                                <span class="CEURAUTHOR">Peter Müstermann</span>
+                            </li>
+
+<pre># The subsequent paper points to a subdirectory that contains the paper,
+# possible data sets and other material that is regarded as part of the paper.
+# Use the model of this subdirectory if you want to give authors the opportunity
+# to publish more than just the paper PDF. The size of the complete proceedings
+# should however not exceed around 100MB!</pre>
+
+                            <li id="paperX">
+                                <a class="CEURTITLE" href="paperX/">A Complex Paper Model</a>
+                                <br/>
+                                <span class="CEURAUTHOR">Anna Paperi</span>
+                                <span class="CEURAUTHOR">Bert Modelo</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 class="AUXSESSION">Session 4: Exceptional Cases</h3>
+<pre class="CEURGUIDE"># Exceptional cases:
+# The following examples are only for exceptional cases; please only provide such items if
+# you believe they are essential; these items are supposed to be NOT indexed by DBLP and
+# other digital library services! Use AUXSESSION if all items are tagged by AUXTITLE;
+# otherwise, use CEURSESSION
+#
+
+# The first item is an example of a paper that is not included as full text.  Such entries are regarded more as a comment rather than a part of the table of contents.  Here we make up some ID, as there is no filename.
+
+# The second item (paper6-copy.pdf) is an example of an extended abstract whose full version was published elsewhere</pre>
+                        <ul>
+                            <li id="no-trace">
+                                <span class="AUXTITLE">Publishing Without a Trace</span> (text not included)
+                                <br/>
+                                <span class="AUXAUTHOR">Conny Nopede-Eff</span>
+                            </li>
+
+                            <li id="paper6-copy">
+                                <span class="AUXTITLE"><a href="paper6-copy.pdf">Full Paper Published Elsewhere</a> (extended abstract; full paper published at ABC-2010)</span>
+                                <span class="AUXPAGES">33</span>
+                                <br/>
+                                <span class="AUXAUTHOR">John Outsider</span>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><time class="CEURSUBMITTEDDATE">YYYY-MM-DD</time>: submitted by Peter Coeditor,
+            metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a></p>
+            <p><time class="CEURPUBDATE">yyyy-mm-dd</time>: published on CEUR-WS.org</p>
+        </footer>
+    </body>
+</html>
