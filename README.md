@@ -16,7 +16,7 @@ Features
 * From a special table of contents file, generate
   * [a CEUR-WS.org compliant index.html file] [3] with additional RDFa annotations
   * [a CEUR-WS.org compliant copyright form] [4]
-  * a LaTeX table of contents that helps you generate an all-in-one PDF version of the proceedings
+  * a LaTeX table of contents that helps you generate an all-in-one PDF version of the proceedings (which you can, e.g., print, but which should not be uploaded to CEUR-WS.org)
   * a BibTeX database to make your proceedings citable
 * Optionally generate this table of contents from [EasyChair] [2] proceedings
   
@@ -75,7 +75,7 @@ Page numbers are an optional feature, but `make toc.xml` generates page number i
 
 If you do not wish to use page numbers, please remove all `pages` entries from `toc.xml`.
 
-If you wish to use page numbers and would also like to publish an all-in-one PDF, please make sure you adapt the `pages` entries to match the all-in-one PDF.  They will have to be shifted as soon as the all-in-one PDF includes material before the papers, such as a preface, and if this material uses the same counter as the papers' pages, e.g. if the preface doesn't use Roman numerals.
+If you wish to use page numbers and would also like to generate an all-in-one PDF, e.g., for distribution during your workshop, please make sure you adapt the `pages` entries to match the all-in-one PDF.  They will have to be shifted as soon as the all-in-one PDF includes material before the papers, such as a preface, and if this material uses the same counter as the papers' pages, e.g. if the preface doesn't use Roman numerals.
 
 ### Generating CEUR-WS.org proceedings ###
 
