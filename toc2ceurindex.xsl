@@ -78,7 +78,7 @@
       <br/>
     
       <h3>
-        <span property="dcterms:title" class="CEURFULLTITLE"><xsl:value-of select="$workshop/title/full"/></span><br/>&#xa;
+        <span property="dcterms:title" class="CEURFULLTITLE">Proceedings of the <xsl:value-of select="$workshop/title/full"/></span><br/>&#xa;
         <xsl:choose>
           <xsl:when test="$workshop/conference">
             co-located with <xsl:if test="$workshop/conference/full"><xsl:value-of select="$workshop/conference/full"/> (</xsl:if>
