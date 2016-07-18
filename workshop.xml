@@ -15,15 +15,15 @@
     <title>
         <!-- ID used to name some of the generated files.  The year, defined in <date> below, will usually be appended to this. -->
         <id>foobar</id>
-        <!-- acronym of the event -->
+        <!-- acronym of the event (CEURVOLACRONYM) -->
         <acronym>FooBar</acronym>
-        <!-- long name of the event -->
+        <!-- long name of the event (CEURVOLTITLE) -->
         <volume>Bargaining for Food</volume>
-        <!-- full title of the proceedings volume --> 
-        <full>Proceedings of the 24th International Workshop on Bargaining for Food</full>
+        <!-- full title of the proceedings volume (CEURFULLTILE) --> 
+        <full>24th International Workshop on Bargaining for Food</full>
     </title>
 
-    <!-- CEUR-WS.org proceedings volume number
+    <!-- CEUR-WS.org proceedings volume number (CEURVOLNR)
 
          Take care: You usually don't know this number in advance, at least not in the case that there are multiple submissions to CEUR-WS.org on the same day.  We recommend that you ask in advance for a volume number, as explained in the “Procedure PUT” section of http://ceur-ws.org/HOWTOSUBMIT.html.
          -->
@@ -32,10 +32,10 @@
     <!-- homepage of the event -->
     <homepage>http://foobar2013.org</homepage>
 
-    <!-- main language of the proceedings (ISO 639-2/T language code, e.g. eng, deu, fra, spa, rus, ita, por, ..., or look up at https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes -->
+    <!-- main language of the proceedings (CEURLANG; ISO 639-2/T language code, e.g. eng, deu, fra, spa, rus, ita, por, ..., or look up at https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes -->
     <language>eng</language>
     
-    <!-- location and date of the event.  Note: if you create a BibTeX database to make it easier for others to cite your papers, this information will also be included.  If a LaTeX document author uses  BibLaTeX (http://ctan.org/pkg/biblatex), this information will be used. -->
+    <!-- location and date of the event (CEURLOCTIME).  Note: if you create a BibTeX database to make it easier for others to cite your papers, this information will also be included.  If a LaTeX document author uses  BibLaTeX (http://ctan.org/pkg/biblatex), this information will be used. -->
 
     <!-- location; please also look it up on the English Wikipedia (http://en.wikipedia.org) and copy that URL into href="..." -->
     <location href="http://en.wikipedia.org/wiki/Bremen">Bremen, Germany</location>
@@ -46,18 +46,20 @@
     <!--     <from>2013-06-18</from> -->
     <!--     <to>2013-06-20</to> -->
     <!-- </date> -->
-    <!-- year in which the final papers of the proceedings were produced; uncomment and edit if different from the year in <date> -->
+    <!-- year in which the final papers of the proceedings were produced (CEURPUBYEAR); uncomment and edit if different from the year in <date> -->
     <!--
     <pubyear>2014</pubyear>
     -->
 
-    <!-- conference this workshop is co-located with;
+    <!-- conference this workshop is co-located with (CEURCOLOCATED);
          remove the whole <conference>...</conference> element if the workshop is standalone -->
     <conference>
         <acronym>FOO 2013</acronym>
         <full>1st International Conference on Abstract Nonsense</full>
         <homepage>http://foo2013.org</homepage>
     </conference>
+
+    <!-- editors of the proceedings volume (usually at the same time the chairs of the workshop; CEURVOLEDITOR) -->
     <editors>
         <!-- please sort alphabetically; the XSLT does not yet do this automatically -->
         <editor>
