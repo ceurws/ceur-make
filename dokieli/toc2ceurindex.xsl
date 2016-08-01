@@ -209,9 +209,8 @@
         </xsl:variable>
 
         <xsl:variable name="sessionIRI">
-            <xsl:text>[this:#</xsl:text>
+            <xsl:text>#</xsl:text>
             <xsl:value-of select="replace(normalize-space($sessionName), '\s+', '-')"/>
-            <xsl:text>]</xsl:text>
         </xsl:variable>
 
         <section about="#table-of-contents" rel="schema:hasPart" resource="{$sessionIRI}">
