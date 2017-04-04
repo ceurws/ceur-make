@@ -134,7 +134,7 @@
                                 <xsl:text>#</xsl:text>
                                 <xsl:value-of select="replace(normalize-space(name), '\s+', '-')"/>
                             </xsl:variable>
-                            <dd id="author-{position()}" rel="bibo:editor" resource="{$editorIRI}"><span about="" rel="schema:contributor schema:author schema:editor{if (@submitting='true') then ' schema:creator' else ''}">
+                            <dd id="author-{position()}" rel="bibo:editor" resource="{$editorIRI}"><span about="" rel="schema:editor{if (@submitting='true') then ' schema:creator' else ''}">
                             <xsl:choose>
                                 <xsl:when test="homepage">
                                     <a about="{$editorIRI}" class="CEURVOLEDITOR" href="{homepage}" property="schema:name" rel="schema:url" typeof="schema:Person"><xsl:value-of select="name"/></a>
