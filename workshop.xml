@@ -19,7 +19,7 @@
         <acronym>FooBar</acronym>
         <!-- long name of the event (CEURVOLTITLE) -->
         <volume>Bargaining for Food</volume>
-        <!-- full title of the proceedings volume (CEURFULLTILE) --> 
+        <!-- full title of the proceedings volume; "Proceedings of the" will be prepended automatically (CEURFULLTITLE) --> 
         <full>24th International Workshop on Bargaining for Food</full>
     </title>
 
