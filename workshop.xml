@@ -79,5 +79,10 @@
             <affiliation>Universität Bonn</affiliation>
             <country>Germany</country>
         </editor>
+        <!-- alternative markup if the submitter is not among the editors (e.g., the proceedings chair of a conference:
+        <non-editor submitting="true">
+            <name>Christoph Lange</name>
+        </non-editor>
+        -->
     </editors>
 </workshop>
