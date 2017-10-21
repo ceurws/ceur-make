@@ -15,7 +15,14 @@
     <!-- If your workshop has no sessions, use <paper>...</paper> immediately below <toc> -->
     <session>
         <title>title of first session</title>
-	<paper>
+        <!-- The following use of the optional @id attribute means 
+             that the full-text of this paper is in a file named
+             article_1.pdf.
+             If no @id attribute is given, then the paper is assumed
+             to be in a file named paper-##.pdf (starting with paper-01.pdf),
+             where ## is the number in the sequence of all <paper> elements
+             in this table of contents (starting with 01). -->
+	<paper id="article_1">
             <title>title of first paper</title>
             <pages from="2" to="6"/>
             <authors>
