@@ -42,6 +42,7 @@
         <meta http-equiv="Content-type" content="text/html;charset=utf-8"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
+        <link rel="stylesheet" type="text/css" href="../ceur-ws-semantic.css"/>
         <link rel="foaf:page" href="{ $volume-url }"/>
         <title>CEUR-WS.org/<xsl:value-of select="$volume"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
       </head>
