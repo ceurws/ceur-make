@@ -2,11 +2,8 @@
     Auto-generate an entry for the main index at http://ceur-ws.org/index.html from a proceedings volume ToC at http://ceur-ws.org/Vol-###/index.html
     
     How to run:
-    1. obtain a clean XHTML version of the proceedings volume ToC:
-       tidy -o /tmp/index.xhtml -asxhtml --preserve-entities no --output-encoding utf8 -w 0 ~/www/Vol-###/index.html
-    2. apply this stylesheet to the XHTML file:
-       xsltproc --nonet index2main.xsl /tmp/index.xhtml
-    3. manually copy/paste the result from standard output into ~/www/index.html and check it.  Note that links to previous editions still have to be created manually.
+    1. run the script: ~/bin/index2main ~/www/Vol-###/index.html
+    2. manually copy/paste the result from standard output into ~/www/index.html and check it.  Note that links to previous editions still have to be created manually.
     
     Part of ceur-make (https://github.com/ceurws/ceur-make/)
 
