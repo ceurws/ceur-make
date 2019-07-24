@@ -14,8 +14,8 @@
 # 
 # Licensed under GPLv3 or any later version
 
-# https://stackoverflow.com/a/697552
-SELF_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+# https://unix.stackexchange.com/a/17500
+SELF_PATH="$(dirname "$(readlink -f "$0")")"
 
 # 1. obtain a clean XHTML version of the proceedings volume ToC:
 tidy -quiet -asxhtml --preserve-entities no -utf8 -wrap 0 $1 | \
