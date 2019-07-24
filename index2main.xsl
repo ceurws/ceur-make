@@ -21,7 +21,8 @@
 <xsl:value-of select="$title-location-time/*[@class='CEURLOCTIME'][1]/text()"/>.<br/>
 Edited by: <xsl:for-each select="//*[@class='CEURVOLEDITOR'][1]/text()"><xsl:value-of select="."/><xsl:if test="position() &lt; last()">, </xsl:if></xsl:for-each><br/><!--
 --><xsl:variable name="pub-date-span" select="//*[@class='CEURPUBDATE'][last()]"/><!--
---><xsl:variable name="submitted-by-span" select="$pub-date-span/preceding-sibling::span/text()[contains(., 'submitted by')]"/>
+--><xsl:variable name="submitted-by-span" select="$pub-date-span/parent::*/text()[contains(., 'submitted by')]"/>
+<xsl:message>XXX<xsl:value-of select="$submitted-by-span/parent::*"/></xsl:message>
 Submitted by: <xsl:value-of select="substring-before(substring-after($submitted-by-span, 'submitted by '), ',')"/><br/><!--
 --><xsl:variable name="pub-date" select="$pub-date-span/text()"/><!-- assumed to look like YYYY-MM-DD
 --><xsl:variable name="pub-month" select="substring($pub-date, 6, 2)"/>
