@@ -1,9 +1,7 @@
 <!--
     Auto-generate an entry for the main index at http://ceur-ws.org/index.html from a proceedings volume ToC at http://ceur-ws.org/Vol-###/index.html
     
-    How to run:
-    1. run the script: ~/bin/index2main ~/www/Vol-###/index.html
-    2. manually copy/paste the result from standard output into ~/www/index.html and check it.  Note that links to previous editions still have to be created manually.
+    This functionality is for the CEUR-WS.org editorial team, not for proceedings editors, but you may use it to get a preview.  Run this via the index2main.sh frontend.
     
     Part of ceur-make (https://github.com/ceurws/ceur-make/)
 
@@ -19,7 +17,7 @@
     <td align="left" bgcolor="#DCDBD7"><b><a name="{ $vol-nr }"><xsl:value-of select="$vol-nr"/></a></b></td>
     <td align="left" bgcolor="#DCDBD7">
       <b><font color="#000000">
-        <a href="http://ceur-ws.org/{ $vol-nr }/"><xsl:value-of select="//*[@class='CEURVOLTITLE'][1]/text()"/>.</a>
+        <a href="http://ceur-ws.org/{ $vol-nr }/"><xsl:apply-templates select="//*[@class='CEURVOLTITLE'][1]"/>.</a>
       </font></b></td>
   </tr>
   <tr>
@@ -27,15 +25,16 @@
     </font></td>
     <xsl:variable name="ceur-full-title" select="//*[@class='CEURFULLTITLE'][1]"/>
     <xsl:variable name="title-location-time" select="$ceur-full-title/parent::*"/>
-    <xsl:variable name="colocated" select="$ceur-full-title/following-sibling::text()[contains(., 'co-located with')]"/>
-    <td bgcolor="#FFFFFF">
-      <xsl:value-of select="$ceur-full-title/text()"/> (<xsl:value-of select="//*[@class='CEURVOLACRONYM'][1]/text()"/>),<xsl:if test="string-length($colocated) &gt; 0"><xsl:value-of select="$colocated"/>
-        <xsl:value-of select="$title-location-time/*[@class='CEURCOLOCATED'][1]/text()"/>)</xsl:if>
-<xsl:value-of select="$title-location-time/*[@class='CEURLOCTIME'][1]/text()"/>.<br/>
-Edited by: <xsl:for-each select="//*[@class='CEURVOLEDITOR'][1]/text()"><xsl:value-of select="."/><xsl:if test="position() &lt; last()">, </xsl:if></xsl:for-each><br/><!--
+    <xsl:variable name="colocated" select="$ceur-full-title/following-sibling[contains(text(), 'co-located with')]"/>
+    <td bgcolor="#FFFFFF"><!--
+      --><xsl:variable name="title" select="$ceur-full-title/text()"/><!--
+      --><xsl:variable name="acronym" select="//*[@class='CEURVOLACRONYM'][1]/text()"/>
+      <xsl:value-of select="$title"/><xsl:if test="not(contains(normalize-space(translate($title, '-', ' ')), normalize-space(translate($acronym, '-', ' '))))"> (<xsl:value-of select="$acronym"/>)</xsl:if><xsl:if test="string-length($colocated) &gt; 0">, <xsl:apply-templates select="$colocated"/>
+      <xsl:apply-templates select="$title-location-time//*[@class='CEURCOLOCATED'][1]"/>)</xsl:if>,
+<xsl:apply-templates select="//*[@class='CEURLOCTIME'][1]"/>.<br/>
+Edited by: <xsl:for-each select="//*[@class='CEURVOLEDITOR']"><xsl:apply-templates select="."/><xsl:if test="position() &lt; last()">, </xsl:if></xsl:for-each><br/><!--
 --><xsl:variable name="pub-date-span" select="//*[@class='CEURPUBDATE'][last()]"/><!--
 --><xsl:variable name="submitted-by-span" select="$pub-date-span/parent::*/text()[contains(., 'submitted by')]"/>
-<xsl:message>XXX<xsl:value-of select="$submitted-by-span/parent::*"/></xsl:message>
 Submitted by: <xsl:value-of select="substring-before(substring-after($submitted-by-span, 'submitted by '), ',')"/><br/><!--
 --><xsl:variable name="pub-date" select="$pub-date-span/text()"/><!-- assumed to look like YYYY-MM-DD
 --><xsl:variable name="pub-month" select="substring($pub-date, 6, 2)"/>
