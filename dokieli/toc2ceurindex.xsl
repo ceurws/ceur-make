@@ -7,7 +7,7 @@
     Part of ceur-make (https://github.com/ceurws/ceur-make/)
 
     © Christoph Lange and contributors 2012–2015
-    Sarven Capadisli 2015-2017
+    Sarven Capadisli 2015-2020
 
     Licensed under GPLv3 or any later version
 -->
@@ -34,7 +34,7 @@
 
     <xsl:template match="/">
 <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-<xsl:comment>CEURVERSION=2017-04-04</xsl:comment>
+<xsl:comment>CEURVERSION=2020-04-03</xsl:comment>
 <xsl:text>
 </xsl:text>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -43,7 +43,7 @@
         <title>CEUR-WS.org/<xsl:value-of select="$volume"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="stylesheet" media="all" title="CEUR-WS" href="http://ceur-ws.org/ceur-ws.css" />
-        <link rel="stylesheet" media="all" title="CEUR-WS" href="http://ceur-ws.org/ceur-ws-semantic.css" />
+        <link rel="stylesheet" media="all" title="CEUR-WS" href="../ceur-ws-semantic.css" />
     </head>
 
     <body about="" prefix="schema: https://schema.org/ bibo: http://purl.org/ontology/bibo/">
@@ -67,8 +67,8 @@
             </dl>
 
             <dl id="document-license">
-                <dt>Copyright</dt>
-                <dd>© <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers by the papers' authors. Copying permitted for private and academic purposes. This volume is published and copyrighted by its editors.</dd>
+                <dt>License</dt>
+                <dd><img alt="CC BY" height="35" src="http://ceur-ws.org/cc-by_100x35.png" width="100" /> <span>Copyright © <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the individual papers by the papers' authors. Copyright © <span class="CEURPUBYEAR"><xsl:value-of select="$pubyear"/></span> for the volume as a collection by its editors. This volume and its papers are published under the Creative Commons License Attribution 4.0 International <a href="https://creativecommons.org/licenses/by/4.0/">(<span class="CEURLIC">CC BY 4.0</span>)</a>.</span></dd>
             </dl>
         </header>
 
@@ -195,7 +195,7 @@
         <footer>
             <xsl:variable name="dateCreated" select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>
             <p><time datatype="xsd:date" datetime="{$dateCreated}" property="schema:dateCreated"><xsl:value-of select="$dateCreated"/></time>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a></p>
-            <p><time class="CEURPUBDATE" datatype="xsd:date" datetime="YYYY-MM-DD" property="schema:datePublished">YYYY-MM-DD</time>: published on CEUR-WS.org |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2FVol-{$number}%2F">valid HTML5</a>|</p>
+            <p><time class="CEURPUBDATE" datatype="xsd:date" datetime="YYYY-MM-DD" property="schema:datePublished">YYYY-MM-DD</time>: published on CEUR Workshop Proceedings (CEUR-WS.org, ISSN 1613-0073) |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2FVol-{$number}%2F">valid HTML5</a>|</p>
         </footer>
     </body>
 </html>
