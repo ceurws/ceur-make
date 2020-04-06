@@ -1,0 +1,207 @@
+/* Semantic extensions to ceur-ws.css                     */
+/* Derived from dokieli <https://dokie.li/>               */
+/* Copyright 2016-2020 Sarven Capadisli
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.                         */
+/* Modified: 2020-04-01/S.Capadisli (dokieli)             */
+/* Modified: 2018-11-09/M.Jeusfeld (sem enriched info)    */
+/* Modified: 31-Aug-2016/M.Jeusfeld (ceur-ws-sem-bg)      */
+/* Modified: 19-Jun-2016/S.Capadisli (dokieli)            */
+/* Modified: 22-May-2016/S.Capadisli (dokieli)            */
+/* Created: 21-Feb-2016/S.Capadisli (dokieli)             */
+
+@media print {
+    body > header address {
+        margin-top:2em;
+        margin-bottom:2em;
+    }
+    body > header #document-identifier {
+        margin-top:0;
+    }
+    body > header #document-identifier dd.CEURURN {
+        position:relative;
+        top:1em;
+    }
+    body > header #document-license {
+        margin-top:2em !important;
+    }
+    body > header #document-license dd > img,
+    body > header #document-license dd > img + span {
+        margin-top:-6em !important;
+    }
+    body > header dl#document-license dd img {
+        margin-bottom:3em;
+    }
+    #content {
+        padding-top:0 !important;
+        page-break-before:always;
+    }
+}
+
+:target {background-color:#FFFFFF;} /* background for current fragment */
+
+/* 2017-08-31: Manfred
+body {background-image: url(http://ceur-ws.org/ceurws-sem-bg.png);}
+*/
+
+#document-language {display:none;}
+
+article h1 {font-size:2em;}
+h1 span {display:block;}
+.pages {float:right; padding: 2px; font-size:smaller;}
+.pages dt, .authors dt {display:none;}
+.authors {font-style:italic; margin:0;}
+.authors dd {display:inline; margin-left:0;}
+.authors dd:not(:empty):after {content:",\0020";}
+.authors dd:last-child:after {content:"";}
+
+body > header {
+    padding-bottom:0.5em;
+    margin-bottom:1em;
+    border-bottom:2px solid gray;
+    float:left;
+    width:100%;
+    position:relative;
+}
+
+body > header address {
+    float:left;
+}
+body > header address a {
+    display:inline-block;
+    position:relative;
+}
+body > header address a:hover:after {
+    content:'';
+    position:absolute;
+    background-image:url("./CEUR-WS-logo-blue.png");
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+body > header #document-identifier {
+    margin:0.5em 0 0 0;
+    width:95%;
+    text-align:right;
+    word-break: break-all;
+    hyphens: auto;
+}
+body > header #document-identifier dt {
+    display:none;
+}
+body > header #document-identifier dd {
+    font-weight:bold;
+    color:#404040;
+    margin-left:0;
+}
+body > header #document-identifier dd:nth-of-type(1):not([class]) {
+    display:none;
+}
+body > header #document-license {
+    color: #777777; font-size: x-small;
+    margin-top:1em;
+    text-align:justify;
+    margin-right:5%;
+}
+body > header #document-license dd > img,
+body > header #document-license dd > img + span {
+    margin-top:-4em;
+}
+
+body > header #document-license dt,
+body > header #document-license dd {
+    margin-left:0;
+}
+body > header #document-license dt {
+display:none;
+}
+body > header #document-license dd img {
+    display:block;
+    margin-bottom:1.5em;
+}
+article, pre {
+    clear:both;
+}
+dl {
+    -webkit-margin-before:0;
+    -webkit-margin-after:0;
+}
+
+#document-event {
+    font-weight:bold;
+    font-size:1.175em;
+}
+
+#document-event .CEURFULLTITLE {
+    padding-top:1.5em;
+    display:block;
+}
+#document-event dd {
+    margin-bottom:1em;
+}
+#document-event dd.CEURLOCATION,
+#document-event dd.CEURTIME {
+    display:inline;
+}
+#document-event dd.CEURLOCATION:after {
+    content:", ";
+}
+#document-event dd.CEURTIME time:after {
+    content:".";
+}
+
+#authors {
+    margin-top:3em;
+    border-bottom:2px solid gray;
+}
+#authors dt {
+    font-weight:bold;
+}
+#document-event dt {
+    display:none;
+}
+#author-org  {
+    list-style:none;
+}
+#author-name dd,
+#author-org,
+#document-event dd {
+    margin-left:0;
+    padding-left:0;
+}
+#author-org li {
+    margin-bottom:0;
+}
+main {
+    clear:both;
+}
+main,
+#content {
+    padding-top:3em;
+}
+
+footer {
+    padding-top:0.5em;
+    margin-top:1em;
+    border-top:2px solid gray;
+    font-size:smaller;
+    color:#777777;
+}
+footer p {
+    margin:0 0 0.25em 0;
+}
+
+/* include info that this index file is semantically enriched; M.Jeusfeld 2018-11-09 */
+/* replaces the special backgrounf image */
+body::after{content:"semantically enriched"; color:#777777; font-size:smaller;}
