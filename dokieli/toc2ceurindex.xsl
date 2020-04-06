@@ -53,7 +53,7 @@
             </address>
 
             <dl id="document-identifier">
-                <dt>Document ID</dt>
+                <dt>Identifier</dt>
                 <dd><a href="{$volume-url}" rel="owl:sameAs"><xsl:value-of select="$volume-url"/></a></dd>
                 <dt>Volume</dt>
                 <dd class="CEURVOLNR" lang="" property="bibo:volume" xml:lang=""><xsl:value-of select="$volume"/></dd>
@@ -115,12 +115,12 @@
                                 -->
                                 <xsl:variable name="same-year" select="year-from-date($workshop/date/from) eq year-from-date($workshop/date/to)"/>
                                 <xsl:variable name="same-year-and-month" select="$same-year and month-from-date($workshop/date/from) eq month-from-date($workshop/date/to)"/>
-                                <time datatype="xsd:dateTime" datetime="{ $workshop/date/from }" property="schema:startDate"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></time>
+                                <time datetime="{ $workshop/date/from }" datatype="xsd:dateTime" property="schema:startDate"><xsl:value-of select="format-date(xs:date($workshop/date/from), concat('[MNn] [D1o]', if (not($same-year)) then ', [Y]' else ''))"/></time>
                                 <xsl:text> to </xsl:text>
-                                <time datatype="xsd:dateTime" datetime="{ $workshop/date/to }" property="schema:endDate"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
+                                <time datetime="{ $workshop/date/to }" datatype="xsd:dateTime" property="schema:endDate"><xsl:value-of select="format-date(xs:date($workshop/date/to), concat(if (not($same-year-and-month)) then '[MNn] ' else '', '[D1o], [Y]'))"/></time>
                             </xsl:when>
                             <xsl:otherwise>
-                                <time datatype="xsd:date" datetime="{ $workshop/date }" property="schema:startDate schema:endDate"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
+                                <time datetime="{ $workshop/date }" datatype="xsd:date" property="schema:startDate schema:endDate"><xsl:value-of select="format-date(xs:date($workshop/date), '[MNn] [D1o], [Y]')"/></time>
                             </xsl:otherwise>
                         </xsl:choose>
                     </dd>
@@ -194,8 +194,8 @@
 
         <footer>
             <xsl:variable name="dateCreated" select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>
-            <p><time datatype="xsd:date" datetime="{$dateCreated}" property="schema:dateCreated"><xsl:value-of select="$dateCreated"/></time>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a></p>
-            <p><time class="CEURPUBDATE" datatype="xsd:date" datetime="YYYY-MM-DD" property="schema:datePublished">YYYY-MM-DD</time>: published on CEUR Workshop Proceedings (CEUR-WS.org, ISSN 1613-0073) |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2FVol-{$number}%2F">valid HTML5</a>|</p>
+            <p><time datetime="{$dateCreated}" datatype="xsd:date" property="schema:dateCreated"><xsl:value-of select="$dateCreated"/></time>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a></p>
+            <p><time class="CEURPUBDATE" datetime="YYYY-MM-DD" datatype="xsd:date" property="schema:datePublished">YYYY-MM-DD</time>: published on CEUR Workshop Proceedings (CEUR-WS.org, ISSN 1613-0073) |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2FVol-{$number}%2F">valid HTML5</a>|</p>
         </footer>
     </body>
 </html>
