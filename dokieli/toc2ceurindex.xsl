@@ -202,20 +202,37 @@
     </xsl:template>
 
     <xsl:template match="session">
-        <xsl:variable name="sessionName">
-            <xsl:number/><xsl:if test="title">
-            <xsl:text>: </xsl:text>
-            <xsl:value-of select="title"/>
+        <xsl:variable name="sessionNumber"><xsl:number/></xsl:variable>
+
+        <xsl:variable name="sessionTitle">
+            <xsl:if test="title">
+                <xsl:value-of select="title"/>
             </xsl:if>
         </xsl:variable>
 
         <xsl:variable name="sessionIRI">
             <xsl:text>#Session-</xsl:text>
-            <xsl:value-of select="replace(normalize-space($sessionName), '\s+', '-')"/>
+            <xsl:value-of select="$sessionNumber"/>
+            <xsl:if test="title">
+                <xsl:text>-</xsl:text>
+            </xsl:if>
+            <xsl:value-of select="replace(normalize-space($sessionTitle), '\s+', '-')"/>
         </xsl:variable>
 
         <section about="#table-of-contents" rel="schema:hasPart" resource="{$sessionIRI}">
-            <h3 about="{$sessionIRI}" class="CEURSESSION" property="schema:name">Session <xsl:value-of select="$sessionName"/></h3>
+            <h3 about="{$sessionIRI}" property="schema:name">Session <xsl:value-of select="$sessionNumber"/>
+              <xsl:if test="title">
+                <xsl:text>: </xsl:text>
+                <xsl:choose>
+                  <xsl:when test="title and url">
+                    <a class="CEURSESSION" href="{url}" property="schema:url"><xsl:value-of select="title"/></a>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <span class="CEURSESSION"><xsl:value-of select="title"/></span>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:if>
+            </h3>
             <div about="{$sessionIRI}" property="schema:description">
                 <ol rel="schema:hasPart">
                     <xsl:apply-templates select="paper"/>
