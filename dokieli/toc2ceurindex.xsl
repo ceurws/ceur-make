@@ -43,7 +43,7 @@
         <title>CEUR-WS.org/<xsl:value-of select="$volume"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="stylesheet" media="all" title="CEUR-WS" href="http://ceur-ws.org/ceur-ws.css" />
-        <link rel="stylesheet" media="all" title="CEUR-WS" href="../ceur-ws-semantic.css" />
+        <link rel="stylesheet" media="all" title="CEUR-WS" href="http://ceur-ws.org/ceur-ws-semantic.css" />
     </head>
 
     <body about="" prefix="schema: https://schema.org/ bibo: http://purl.org/ontology/bibo/">
