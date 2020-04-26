@@ -194,7 +194,7 @@
 
         <footer>
             <xsl:variable name="dateCreated" select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>
-            <p><time datetime="{$dateCreated}" datatype="xsd:date" property="schema:dateCreated"><xsl:value-of select="$dateCreated"/></time>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a></p>
+            <p><time datetime="{$dateCreated}" datatype="xsd:date" property="schema:dateCreated"><xsl:value-of select="$dateCreated"/></time>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a></p>
             <p><time class="CEURPUBDATE" datetime="YYYY-MM-DD" datatype="xsd:date" property="schema:datePublished">YYYY-MM-DD</time>: published on CEUR Workshop Proceedings (CEUR-WS.org, ISSN 1613-0073) |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2FVol-{$number}%2F">valid HTML5</a>|</p>
         </footer>
     </body>
@@ -204,23 +204,17 @@
     <xsl:template match="session">
         <xsl:variable name="sessionNumber"><xsl:number/></xsl:variable>
 
-        <xsl:variable name="sessionTitle">
-            <xsl:if test="title">
-                <xsl:value-of select="title"/>
-            </xsl:if>
-        </xsl:variable>
-
-        <xsl:variable name="sessionIRI">
-            <xsl:text>#Session-</xsl:text>
+        <xsl:variable name="sessionId">
+            <xsl:text>Session-</xsl:text>
             <xsl:value-of select="$sessionNumber"/>
             <xsl:if test="title">
                 <xsl:text>-</xsl:text>
+                <xsl:value-of select="replace(normalize-space(title), '\s+', '-')"/>
             </xsl:if>
-            <xsl:value-of select="replace(normalize-space($sessionTitle), '\s+', '-')"/>
         </xsl:variable>
 
-        <section about="#table-of-contents" rel="schema:hasPart" resource="{$sessionIRI}">
-            <h3 about="{$sessionIRI}" property="schema:name">Session <xsl:value-of select="$sessionNumber"/>
+        <section id="{$sessionId}" rel="schema:hasPart" resource="#{$sessionId}">
+            <h3 property="schema:name">Session <xsl:value-of select="$sessionNumber"/>
               <xsl:if test="title">
                 <xsl:text>: </xsl:text>
                 <xsl:choose>
@@ -233,7 +227,7 @@
                 </xsl:choose>
               </xsl:if>
             </h3>
-            <div about="{$sessionIRI}" property="schema:description">
+            <div datatype="rdf:HTML" property="schema:description">
                 <ol rel="schema:hasPart">
                     <xsl:apply-templates select="paper"/>
                 </ol>
@@ -276,7 +270,7 @@
 
         <xsl:variable name="pdf" select="concat($id, '.pdf')"/>
 
-        <li about="#{$id}" id="{$id}" typeof="schema:ScholarlyArticle" value="{$position}">
+        <li id="{$id}" resource="#{$id}" typeof="schema:ScholarlyArticle" value="{$position}">
             <a class="CEURTITLE" href="{$pdf}" property="schema:name" rel="schema:url"><xsl:value-of select="title"/></a>
             <xsl:if test="url"><xsl:text> </xsl:text>[<a rel="owl:sameAs" href="{url}">canonical URL</a>]</xsl:if>
             <xsl:if test="pages">
