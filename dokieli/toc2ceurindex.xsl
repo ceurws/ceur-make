@@ -46,7 +46,7 @@
         <link rel="stylesheet" media="all" title="CEUR-WS" href="../ceur-ws-semantic.css" />
     </head>
 
-    <body about="" prefix="schema: https://schema.org/ bibo: http://purl.org/ontology/bibo/">
+    <body about="" prefix="schema: http://schema.org/ bibo: http://purl.org/ontology/bibo/">
         <header>
             <address>
               <a href="http://ceur-ws.org/"><img alt="CEUR-WS" height="100" src="http://ceur-ws.org/CEUR-WS-logo.png" width="390" /></a>
