@@ -30,7 +30,7 @@ Authors: _______________________________________________________________
 ________________________________________________________________________
 
 Prepared for the Workshop:
-Proceedings of the <xsl:value-of select="title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="year-from-date(xs:date(date))"/> Workshop
+Proceedings of the <xsl:value-of select="title/acronym"/><xsl:text> </xsl:text><xsl:value-of select="year-from-date(if ($workshop/date/from) then $workshop/date/from else $workshop/date)"/> Workshop
 <xsl:if test="conference/acronym"><xsl:value-of select="conference/acronym"/><xsl:text>&#xa;</xsl:text>
 </xsl:if>(to be published with CEUR-WS.org)
 

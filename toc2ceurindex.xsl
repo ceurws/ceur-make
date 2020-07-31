@@ -42,6 +42,7 @@
         <meta http-equiv="Content-type" content="text/html;charset=utf-8"/><xsl:comment>Not HTML 5 style; for backwards compatibility</xsl:comment>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="../ceur-ws.css"/>
+        <link rel="stylesheet" type="text/css" href="../ceur-ws-semantic.css"/>
         <link rel="foaf:page" href="{ $volume-url }"/>
         <title>CEUR-WS.org/<xsl:value-of select="$volume"/> - <xsl:value-of select="$workshop/title/full"/> (<xsl:value-of select="$workshop/title/acronym"/>)</title>
       </head>
@@ -161,7 +162,7 @@
     
     <hr/>
     <span class="unobtrusive">
-      <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/editor[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a><br/>&#xa;
+      <xsl:value-of select="format-date(current-date(), (: old format: '[D]-[MNn,*-3]-[Y]' :) '[Y]-[M,2]-[D,2]')"/>: submitted by <xsl:value-of select="$workshop/editors/*[@submitting='true']/name"/>, metadata incl. bibliographic data published under <a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0</a><br/>&#xa;
     <span property="dcterms:issued" datatype="xsd:date" class="CEURPUBDATE">yyyy-mm-dd</span>: published on CEUR-WS.org
 |<a href="https://validator.w3.org/nu/?doc=http%3A%2F%2Fceur-ws.org%2F{ $volume }%2F">valid HTML5</a>|
     </span>
