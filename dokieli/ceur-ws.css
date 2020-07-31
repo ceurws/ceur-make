@@ -29,8 +29,13 @@
 /* Modified: 11-Dec-2013/M.Jeusfeld  (CEURWSLOGO div)     */
 /* Modified: 24-Mar-2015/M.Jeusfeld  (paper directories)  */
 /* Modified: 16-Jul-2015/C.Lange     (more accessible link colors) */
-/* Modified: 08-Feb-2016/M.Jeusfeld  (distinguidh AUX from CEURTITLES) */
-/* Modified: 22-May-2016/S.Capadisli (dokieli)            */
+/* Modified: 22-May-2016/S.Capadisli (HTML5 accessibility; approved by C.Lange) */
+/* Modified: 08-Feb-2016/M.Jeusfeld  (distinguish AUX from CEURTITLES) */
+/* Modified: 05-Oct-2019/M.Jeusfeld  (CEURCCBY tag) */
+/* Modified: 30-Oct-2019/M.Jeusfeld  (write before Volnr disabled) */
+/* Modified: 03-Dec-2019/M.Jeusfeld  (print bg images) */
+/* Modified: 31-Jul-2020/C.Lange     (merged S.Capadisli's changes from 22-May-2016) */
+
 
 body {
 font-family: arial, sans-serif;
@@ -92,9 +97,10 @@ PRE {color:#228120}
 .CEURTITLE:hover {color: #006040;}   /* proper CEURTITLEs get highlighted */
 
 .CEURVOLNR {font-weight:bold; color:#404040; font-size:large;}
+
 /* write "CEUR-WS.org/" with background color before the VOLNR */
 /* will show up when printing the page */
-.CEURVOLNR:before{content:"CEUR-WS.org/"; color:#F5F4EF; font-size:large;}
+/* .CEURVOLNR:before{content:"CEUR-WS.org/"; color:#F5F4EF; font-size:large;} */
 
 .CEURURN {font-weight:bold; color:#404040;}
 
@@ -114,12 +120,22 @@ PRE {color:#228120}
    background-image: url('./CEUR-WS-logo.png');
    height: 100px;
    width: 390px;
+   color-adjust: exact !important;                 /*Firefox*/
 }
 #CEURWSLOGO:hover {
    background-image: url('./CEUR-WS-logo-blue.png');
+/*   background-image: url('./CEUR-WS-logo-xmas.png'); */
 }
 
-/*dokieli compatible*/
+
+#CEURCCBY {
+   background-image: url('./cc-by_100x35.png');
+   width: 100px;
+   height: 35px;
+   color-adjust: exact !important;                 /*Firefox*/
+}
+ 
+/* HTML5 accessibility improvements from http://dokie.li */
 #document-language {display:none;}
 
 article h1 {font-size:2em;}
