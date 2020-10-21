@@ -11,6 +11,8 @@ RUN apt-get update -q && apt-get install -qy \
     make git \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /usr/local/src
+RUN git clone https://github.com/ceurws/ceur-make
 
 WORKDIR /data
 VOLUME ["/data"]
