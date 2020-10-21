@@ -1,0 +1,4 @@
+#!/bin/bash
+# 2020-10-21 WF
+# docker build script
+docker build . -t ceur-ws/ceur-make:v0.1 .
