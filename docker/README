@@ -1,0 +1,2 @@
+The docker image created is not to be called "lightweight" the initial download may take a while and add a few GB worth of downloaded files to your docker environment. 
+
