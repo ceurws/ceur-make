@@ -4,7 +4,7 @@
 
 # get the current tag from the build script e.g.
 # ceur-ws/webserver:v0.1
-tag=$(grep build build | cut -f4 -d ' ')
+tag=$(grep "docker build" build | cut -f4 -d ' ')
 
 #ansi colors
 #http://www.csc.uvic.ca/~sae/seng265/fall04/tips/s265s047-tips/bash-using-colors.html
@@ -49,7 +49,6 @@ usage() {
   echo ""
   echo "-b | --bash: start a bash terminal shell within the currently running container"
   echo "-h | --help: show this usage"
-  echo "-k | --kill: stop the docker image"
   exit 1
 }
 
@@ -57,7 +56,8 @@ usage() {
 # start a bash shell within the currently running container
 #
 bashInto() {
-  sudo docker exec -it ceur-make bash
+  echo $tag
+  sudo docker run -it $tag bash
 }
 
 # commandline option
@@ -69,7 +69,6 @@ do
   # optionally show usage
   case $option in
     -b|--bash) bashInto;;
-    -h|--help) usage;; 
+    -h|--help) usage;;
   esac
 done
-
